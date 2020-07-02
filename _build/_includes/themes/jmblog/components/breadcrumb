@@ -1,0 +1,7 @@
+<ol class="breadcrumb">
+  <li><a href="/" title="{{ site.name }}">Home</a></li>
+  {% if page.categories.size  %}
+  <li><a href="/categories/{{page.category}}/">{{page.category | capitalize}}</a></li>
+  {% endif %}
+  <li class="active">{{page.title}}</li>
+</ol>

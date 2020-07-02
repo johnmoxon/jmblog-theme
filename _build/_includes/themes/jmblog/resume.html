@@ -1,0 +1,18 @@
+{%comment%}
+Wrap user content, potentially include components that
+render front matter as content
+{%endcomment%}
+
+{% include themes/jmblog/components/centred_buttons.html %}
+
+<!-- Summary -->
+<div class="content">
+    <!-- <div class="column content"> -->
+        {{ content }}
+    <!-- </div> -->
+</div>
+
+
+{% include themes/jmblog/components/resume.html %}
+
+{% include themes/jmblog/components/social_buttons_large.html %}

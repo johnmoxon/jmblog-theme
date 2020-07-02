@@ -1,0 +1,19 @@
+<span class="share">
+      <a href="http://twitter.com/home?status={{page.description | uri_escape}}%20{{site.production_url}}{{page.url | uri_escape}}" title="Share with twitter" data-toggle="tooltip" data-placement="top" data-provider="twitter">
+          <i class="fa fa-twitter"></i>
+      </a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{site.production_url}}{{page.url | uri_escape}}" title="Share with facebook" data-toggle="tooltip" data-placement="top" data-provider="facebook">
+          <i class="fa fa-facebook"></i>
+      </a>
+      <a href="https://plus.google.com/share?url={{page.description | uri_escape}}%20{{site.production_url}}{{page.url | uri_escape}}" title="Share on google+" data-toggle="tooltip" data-placement="top" data-provider="google+">
+          <i class="fa fa-google-plus"></i>
+      </a>
+      <!--
+      <a href="http://pinterest.com/pin/create/button/?url={{site.production_url | uri_escape }}{{page.url | uri_escape}}&media={{site.production_url | uri_escape }}/assets/img/avatar_200x200.jpg&{{page.description | uri_escape}}" title="Share on pinterest" data-toggle="tooltip" data-placement="top" data-provider="pintrest">
+          <i class="fa fa-pinterest"></i>
+      </a>
+      -->
+      <a href="{{site.JB.rss_path}}" title="Rss feed" data-toggle="tooltip" data-placement="top" data-provider="feed subscribe">
+          <i class="fa fa-rss"></i>
+      </a>
+    </span>

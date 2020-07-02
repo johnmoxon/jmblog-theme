@@ -1,0 +1,86 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+
+# source: ./                 # Current-dir
+destination: ./_site
+include:
+  - _pages
+
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+title: Learn. Grow. Lead in Tech 
+tagline: "Finding inspiration and adventures in a digital leadership career."
+email: jmoxon@gmail.com
+description: >- # this means to ignore newlines until "baseurl:"
+  Personal blog for John Moxon | Digital Leader, Life-long-learner,
+  Risk mitigator, Technology/Fintech evangelist and amateur 
+  beer brewer. Writing articles about what I know and what I learn as I 
+  find my own path in my career and life. 
+copyright: "copyright John Moxon 2020. All rights reserved."
+license: "copyright John Moxon 2020. All rights reserved."
+
+
+permalink: /:categories/:title
+relative_permalinks: false
+
+timezone: Australia/Brisbane
+
+quiet: false
+verbose: false
+
+
+
+baseurl: "" # the subpath of your site, e.g. /blog
+url: https://www.jmoxon.net # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username : https://twitter.com/johnmoxon
+github_username : http://github.com/johnmoxon/
+linkedin_username : https://www.linkedin.com/in/johnmoxon/
+medium_username : https://medium.com/@johnmoxon
+meeting_url: 'https://meetings.hubspot.com/jmoxon'
+
+
+# ---- Analytics ---- #
+analytics:
+  gtm:
+    tracking_id: GTM-WGHRT3
+  hubspot :
+    tracking_id : '7805952'
+
+
+
+
+# Build settings
+markdown: kramdown
+# theme: jmblog
+plugins:
+  - jekyll-gist
+  - jekyll-mentions
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-sitemap
+
+
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+# exclude:
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
+
+kramdown:
+  input: GFM

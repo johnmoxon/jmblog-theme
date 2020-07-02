@@ -1,0 +1,43 @@
+<form role="form"
+  id="simpleform"
+  data-toggle="validator"
+  action="https://getsimpleform.com/messages?form_api_token=41dc591ad6a976440d791b04906034c7"
+  method="post"
+  novalidate>
+  <div class="row">
+    <!-- the redirect_to is optional, the form will redirect to the referrer on submission -->
+    <input type='hidden' name='redirect_to' value='{{site.production_url}}/thank-you.html'>
+    <input type="hidden" name="rationale" value="none">
+    <div class="form-group col-xs-12 col-lg-6 col-md-6">
+      <label for="userFullName" class="sr-only">Name</label>
+      <input class="form-control input-lg"
+        id="userFullName"
+        name="fullname"
+        placeholder="Enter name"
+        data-error="Please enter full name"
+        required>
+      <div class="help-block with-errors"></div>
+
+    </div>
+    <div class="form-group col-xs-12 col-lg-6 col-md-6">
+      <label for="userEmail" class="sr-only">Email address</label>
+      <input type="email"
+        class="form-control input-lg"
+        id="userEmail"
+        name="email"
+        placeholder="Enter email"
+        data-error="Must be a valid email"
+        required>
+      <div class="help-block with-errors"></div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="userMessage" class="sr-only">Message</label>
+    <textarea name="message" class="form-control input-lg" id="userMessage" placeholder="Your message"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-default btn-lg">Submit</button>
+</form>
+<div class="alert alert-success hide">
+  Thanks for saying Hi! We got your message
+</div>
