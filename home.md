@@ -1,6 +1,7 @@
 ---
 layout: error
 title: This is a page
+permalink: /
 ---
 <div class="debug debug-layouts__home">
 # Lets start something today

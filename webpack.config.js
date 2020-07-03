@@ -103,7 +103,7 @@ module.exports = {
         { from: 'LICENSE.txt', to: '.' },
         { from: 'Gemfile', to: '.' },
         { from: 'Gemfile.lock', to: '.' },
-        { from: 'jmblog-clean.gemspec', to: '.' },
+        { from: 'jmblog-theme.gemspec', to: '.' },
         { from: '_config.yml', to: '.' },
         // { from: 'src/jekyll' }
         // { from: 'other', to: 'public' },
