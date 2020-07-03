@@ -11,7 +11,7 @@ module.exports = {
   entry: {
     // app: './src/index/js/index.js',
     holding: './src/holding-page/js/index.js',
-    error: './src/error/js/error.js'
+    // error: './src/error/js/error.js'
   },
   output: {
     path: path.resolve(__dirname, '_build'),
@@ -41,8 +41,8 @@ module.exports = {
       hash: true,
       inject: true,
       chunks: ['holding'],
-      template: './src/_includes/themes/jmblog/theme/holding.html',
-      filename: '_includes/themes/jmblog/theme/holding.html',
+      template: './src/_includes/themes/jmblog-theme/theme/holding.html',
+      filename: '_includes/themes/jmblog-theme/theme/holding.html',
       'meta': {
         // 'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',
         // Will generate: <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -69,8 +69,8 @@ module.exports = {
       hash: true,
       inject: true,
       chunks: ['error'],
-      template: './src/_includes/themes/jmblog/theme/error.html',
-      filename: '_includes/themes/jmblog/theme/error.html',
+      template: './src/_includes/themes/jmblog-theme/theme/error.html',
+      filename: '_includes/themes/jmblog-theme/theme/error.html',
       minify: {
         collapseWhitespace: false,
         removeComments: false,
@@ -98,8 +98,15 @@ module.exports = {
         { from: 'src/assets', to: 'assets' },
         { from: 'src/_includes', to: '_includes' },
         { from: 'src/_layouts', to: '_layouts' },
-        { from: 'home.md', to: '.' },
-        { from: 'page.md', to: '.' },
+        // 
+        { from: '_data', to: '_data' },
+        { from: '_pages', to: '_pages' },
+        { from: '_posts', to: '_posts' },
+
+        // { from: 'home.md', to: '.' },
+        // { from: 'page.md', to: '.' },
+
+        { from: 'README.md', to: '.' },
         { from: 'LICENSE.txt', to: '.' },
         { from: 'Gemfile', to: '.' },
         { from: 'Gemfile.lock', to: '.' },

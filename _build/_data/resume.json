@@ -1,0 +1,202 @@
+{
+  "basics": {
+    "name": "John Moxon",
+    "label": "Technology Leader",
+    "picture": "https://media-exp1.licdn.com/dms/image/C5603AQGb6Z7sEEPylg/profile-displayphoto-shrink_400_400/0?e=1597881600&v=beta&t=JtNwNnSgSxWwKqQJgs5JIUHdB1qEMYWSpWx-uQnUjlI",
+    "email": "john@jmoxon.net",
+    "phone": "+61 413 896 171",
+    "website": "https://jmoxon.net",
+    "summary": "John is a experienced senior technical leader who bridges the gap between technology and business acumen. With a proven track record of deliving best-in-class product customers love",
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "johnmoxon",
+        "url": "https://www.linkedin.com/in/johnmoxon/"
+      },
+      {
+        "network": "Twitter",
+        "username": "johnmoxon",
+        "url": "https://twitter.com/johmmoxon"
+      },
+      {
+        "network": "Medium",
+        "username": "@johnmoxon",
+        "url": "https://medium.com/@johnmoxon"
+      }
+    ]
+  },
+  "work": [
+    {
+      "company": "Travel Money Group",
+      "position": "Head of Technology",
+      "website": "https://travelmoneyoz.com",
+      "startDate": "2017-07-01",
+      "summary": "Managing an annual budget between $4-6M, I was tasked with delivering enterprise systems and applications to enable staff and customers to trade in foreign currency products.  As part of the brand's senior leadership team I helped define and implement the groups retail and online strategy.",
+      "highlights": [
+        "Drove 111% Currency Card revenue increase through systematic indentification and removal user friction points",
+        "Reduced annual compliance spend by 30%",
+        "Improved login success rates by over 10%",
+        "Implemented high-availabilty failover retail servers ensuring 99.999% uptime during trading hours",
+        "Negotiated and coordinated external vendors to integrate Adyen payment gateway including card stored payment details. This is expected to increase overseas payment success by upto 30%"
+      ]
+    },
+    {
+      "company": "Travel Money Group",
+      "position": "Digital CX Manager",
+      "website": "https://travelmoneyoz.com",
+      "startDate": "2015-10-01",
+      "endDate": "2017-07-01",
+      "summary": "Pied Piper is a multi-platform technology based on a proprietary universal compression algorithm that has consistently fielded high Weisman Scores™ that are not merely competitive, but approach the theoretical limit of lossless compression.",
+      "highlights": [
+        "Successfully lead multiple diciplines across internal and exteral teams to deliver an industry first digital wallet solution sold in over 1000 retail stores in Australia with a 75k active user base growing 30% year on year.",
+        "Implemented sales support desk team and enabled with online chat, reduced support resolution time from 2-5 days to under 4mins.  This has lead to network-wide adoption and a turnover increase of over 110% ",
+        "Defined, implemented and deployed operational "
+      ]
+    },
+    {
+      "company": "Flight Centre Travel Group",
+      "position": "Digital Delivery Lead | Niche Brands",
+      "website": "http://flightcentre.com.au",
+      "startDate": "2015-10-01",
+      "endDate": "2013-06-01",
+      "summary": "Lead a multi-disciplinary agile digital delivery team developing Drupal aplications for a family of 6 niche travel brands.",
+      "highlights": [
+        "Lead a multi-disciplinary team of 14 drupal developers, Business Analysts, Scrum masters and conversion rate optimisation analysts",
+        "Implemented agile scrum methodologies and gained widescale adoption and acceptance amongst marketing, UX and ",
+        "Optimized an algorithm that holds the current world record for Weisman Scores"
+      ]
+    },
+    {
+      "company": "Flight Centre Travel Group",
+      "position": "Senior Web Developer",
+      "website": "http://flightcentre.com.au",
+      "startDate": "2015-10-01",
+      "endDate": "2013-06-01",
+      "summary": "Summary of Web developer role",
+      "highlights": [
+        "Implemented standardised provisioned development environments, cutting the ramp-up speed for new hires from 2 weeks to 2 days.",
+        "Lead front-end developer for the group's internal CRM and lead distribution system. Routing over 2500 enquiries a day across over 800 retail stores and over 6000 staff.",
+        ""
+      ]
+    },
+    {
+      "company": "Fabric Digital (UK)",
+      "position": "Head of Development",
+      "website": "http://flightcentre.com.au",
+      "startDate": "2015-10-01",
+      "endDate": "2013-06-01",
+      "summary": "Pied Piper is a multi-platform technology based on a proprietary universal compression algorithm that has consistently fielded high Weisman Scores™ that are not merely competitive, but approach the theoretical limit of lossless compression.",
+      "highlights": [
+        "Build an algorithm for artist to detect if their music was violating copy right infringement laws",
+        "Successfully won Techcrunch Disrupt",
+        "Optimized an algorithm that holds the current world record for Weisman Scores"
+      ]
+    },
+    {
+      "company": "Self-employed",
+      "position": "Full-stack Developer",
+      "website": "http://flightcentre.com.au",
+      "startDate": "2015-10-01",
+      "endDate": "2013-06-01",
+      "summary": "Pied Piper is a multi-platform technology based on a proprietary universal compression algorithm that has consistently fielded high Weisman Scores™ that are not merely competitive, but approach the theoretical limit of lossless compression.",
+      "highlights": [
+        "Build an algorithm for artist to detect if their music was violating copy right infringement laws",
+        "Optimized an algorithm that holds the current world record for Weisman Scores"
+      ]
+    },
+    {
+      "company": "KCOM Group (UK)",
+      "position": "Web Developer",
+      "website": "http://flightcentre.com.au",
+      "startDate": "2015-10-01",
+      "endDate": "2013-06-01",
+      "summary": "Pied Piper is a multi-platform technology based on a proprietary universal compression algorithm that has consistently fielded high Weisman Scores™ that are not merely competitive, but approach the theoretical limit of lossless compression.",
+      "highlights": [
+        "Build an algorithm for artist to detect if their music was violating copy right infringement laws",
+        "Successfully won Techcrunch Disrupt",
+        "Optimized an algorithm that holds the current world record for Weisman Scores"
+      ]
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "CoderDojo",
+      "position": "Teacher",
+      "website": "http://coderdojo.com/",
+      "startDate": "2012-01-01",
+      "endDate": "2013-01-01",
+      "summary": "Global movement of free coding clubs for young people.",
+      "highlights": [
+        "Awarded 'Teacher of the Month'"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Oklahoma",
+      "area": "Information Technology",
+      "studyType": "Bachelor",
+      "startDate": "2011-06-01",
+      "endDate": "2014-01-01",
+      "gpa": "4.0",
+      "courses": [
+        "DB1101 - Basic SQL",
+        "CS2011 - Java Introduction"
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "title": "Most improved brand by profit globally",
+      "date": "2018-07-14",
+      "awarder": "Flight Centre Travel Group",
+      "summary": "There is no spoon."
+    },
+    {
+      "title": "3 time 'top-performers' Global award winner (2018,2017,2012)",
+      "date": "2018",
+      "awarder": "Flight Centre Travel Group",
+      "summary": "There is no spoon."
+    }
+  ],
+  "publications": [
+    {
+      "name": "Video compression for 3d media",
+      "publisher": "Hooli",
+      "releaseDate": "2014-10-01",
+      "website": "http://en.wikipedia.org/wiki/Silicon_Valley_(TV_series)",
+      "summary": "Innovative middle-out compression algorithm that changes the way we store data."
+    }
+  ],
+  "skills": [
+    {
+      "name": "Web Development",
+      "level": "Master",
+      "keywords": [
+        "HTML",
+        "CSS",
+        "Javascript"
+      ]
+    },
+    {
+      "name": "Compression",
+      "level": "Master",
+      "keywords": [
+        "Mpeg",
+        "MP4",
+        "GIF"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Native speaker"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Craft Beer Brewing"
+    }
+  ]
+}
