@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 Gem::Specification.new do |spec|
-  spec.name          = "jmblog-clean"
+  spec.name          = "jmblog-theme"
   spec.version       = "0.1.0"
   spec.authors       = ["John Moxon"]
   spec.email         = ["jmoxon@gmail.com"]
 
-  spec.summary       = "Write a short summary, because Rubygems requires one."
+  spec.summary       = "Jekyll gem theme, based on the wix train of thought "
   spec.homepage      = "https://www.jmoxon.net"
   spec.license       = "MIT"
   
