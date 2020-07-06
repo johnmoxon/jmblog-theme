@@ -8,19 +8,24 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 
-# source: ./                 # Current-dir
+#source: ./_build                    # Current-dir
 destination: ./_site
 include:
   - _pages
+collections:
+  authors:
+    output: true
+
 
 # Site settings
 # These are used to personalize your new site. If you look in the HTML files,
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Learn. Grow. Lead in Tech 
-tagline: "Finding inspiration and adventures in a digital leadership career."
-email: jmoxon@gmail.com
+title: Learn. Grow. Lead.
+tagline: "Lessons Learned Through A Digital Life"
+author: John Moxon
+email: john@jmoxon.net
 description: >- # this means to ignore newlines until "baseurl:"
   Personal blog for John Moxon | Digital Leader, Life-long-learner,
   Risk mitigator, Technology/Fintech evangelist and amateur 
@@ -29,6 +34,8 @@ description: >- # this means to ignore newlines until "baseurl:"
 copyright: "copyright John Moxon 2020. All rights reserved."
 license: "copyright John Moxon 2020. All rights reserved."
 
+paginate: 5
+paginate_path: "/articles/page:num/"
 
 permalink: /:categories/:title
 relative_permalinks: false
@@ -61,13 +68,13 @@ analytics:
 
 # Build settings
 markdown: kramdown
-# theme: jmblog
+theme: jmblog-theme
 plugins:
-  - jekyll-gist
-  - jekyll-mentions
-  - jekyll-paginate
-  - jekyll-feed
-  - jekyll-sitemap
+- jekyll-gist
+- jekyll-mentions
+- jekyll-paginate
+- jekyll-feed
+- jekyll-sitemap
 
 
 # Exclude from processing.

@@ -1,0 +1,61 @@
+{% comment %} 
+                <!-- Pagination links -->
+                <div class="pagination">
+                {% if paginator.previous_page %}
+                    <a href="{{ paginator.previous_page_path }}" class="previous">
+                    Previous
+                    </a>
+                {% else %}
+                    <span class="previous">Previous</span>
+                {% endif %}
+                <span class="page_number ">
+                    Page: {{ paginator.page }} of {{ paginator.total_pages }}
+                </span>
+                {% if paginator.next_page %}
+                    <a href="{{ paginator.next_page_path }}" class="next">Next</a>
+                {% else %}
+                    <span class="next ">Next</span>
+                {% endif %}
+                </div>
+                {% endcomment %}
+
+                {% if paginator.total_pages > 1 %}
+
+                <nav class="pagination" role="navigation" aria-label="pagination">
+
+                    {% if paginator.previous_page %}
+                    <a class="pagination-previous" 
+                        title="This is the first page"
+                        href="{{ paginator.previous_page_path | relative_url }}">Previous</a>
+                    {% else %}
+                    <a class="pagination-previous" title="This is the first page" disabled>Previous</a>
+                    {% endif %}
+
+                    {% if paginator.next_page %}
+                    <a class="pagination-next" 
+                        href="{{ paginator.next_page_path | relative_url }}">Next page</a>
+                    {% else %}
+                    <a class="pagination-next" title="This is the last page" disabled>Next page</a>
+                    {% endif %}
+                    
+
+                    <ul class="pagination-list">
+                    {% for page in (1..paginator.total_pages) %}
+                        <li>
+                        {% if page == paginator.page %}
+                        <a class="pagination-link is-current" aria-label="Page {{page}}" aria-current="page">{{ page }}</a>
+                        {% elsif page == 1 %}
+                        <a class="pagination-link" 
+                            aria-label="Page 1" 
+                            aria-current="page"
+                            href="{{ '/' | relative_url }}">{{ page }}</a>
+                        {% else %}
+                        <a class="pagination-link" 
+                            aria-label="Goto page {{page}}"
+                            href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a>
+                        {% endif %}
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </nav>
+                {% endif %}

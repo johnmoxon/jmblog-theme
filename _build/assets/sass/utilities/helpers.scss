@@ -1,0 +1,30 @@
+// Helper classes
+.is-horizontal-center {
+  justify-content: center;
+}
+
+.rounded-image-has-inner-shadow {
+  // box-shadow: inset 0 8px 6px -6px black;
+  position: absolute;
+  width: 128px;
+  height: 128px;
+  box-shadow: inset 0 7px 9px -7px rgba(0,0,0,0.4);
+  // box-shadow: inset 0 -7px 9px -7px rgba(0,0,0,0.4);
+  // box-shadow: inset vertical horizontal blur spread color;
+  border-radius: 100px; // circles shadow to match the image 
+  top: 0;
+}
+
+.has-vcentred-content{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  
+  *{
+    align-self: center;
+  }
+}
+
+.has-border-black{
+  border: 1px solid $black;
+}

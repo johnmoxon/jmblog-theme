@@ -1,0 +1,49 @@
+.navbar{
+  @include has-mobile-navbar{
+    position: absolute !important;
+    top:0px;
+    right:0;
+    width:100%;
+  }
+
+  .navbar-menu{
+    @include has-standard-navbar {
+      border:solid $black;
+      border-width: 1px 0;
+
+      .navbar-item:first-child{
+        border-left: 1px solid $black;
+      }
+
+      a.navbar-item, a.navbar-link{
+        border-right: 1px solid $black;
+        padding-left: $navbar-padding-horizontal;
+        padding-right: $navbar-padding-horizontal;
+      }
+
+      div.sharing-utility{
+        border-right: 1px solid $black;
+        padding-left: $navbar-padding-horizontal - 1rem;
+        padding-right: $navbar-padding-horizontal - 1rem;
+      }
+
+
+      // .navbar-link:not(.is-arrowless){
+      //   // padding-left: $navbar-padding-horizontal;
+      //   // padding-right: $navbar-padding-horizontal + 0.5rem;
+      // }
+      //
+      .navbar-dropdown .navbar-item{
+        border-right: unset;
+        border-left: unset;
+      }
+    }
+  }
+
+  .navbar-start{
+    @include has-standard-navbar {
+      flex: 1;
+      justify-content: center;
+    }
+  }
+}

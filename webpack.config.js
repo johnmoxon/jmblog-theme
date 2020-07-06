@@ -9,8 +9,8 @@ module.exports = {
   // mode: 'development',
   mode: 'production',
   entry: {
-    // app: './src/index/js/index.js',
-    holding: './src/holding-page/js/index.js',
+    default: './src/default/js/index.js',
+    maintenance: './src/maintenance/js/index.js',
     // error: './src/error/js/error.js'
   },
   output: {
@@ -20,6 +20,11 @@ module.exports = {
   },
   resolve: {
     modules: ['node_modules'],
+    alias:{
+      Assets: path.resolve(__dirname, 'src/assets/'),
+      Includes: path.resolve(__dirname, 'src/_includes/'),
+      Layouts: path.resolve(__dirname, 'src/_layouts/'),
+    }
   },
   devtool: false,
   plugins: [
@@ -28,21 +33,21 @@ module.exports = {
       exclude: ['vendor.bundle.js']
     }),
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
-    // new HtmlWebpackPlugin({
-    //   title: 'Home page',
-    //   hash: true,
-    //   // inject: true,
-    //   chunks: ['app'],
-    //   template: './src/index/index.html',
-    //   filename: 'index.html'
-    // }),
+    new HtmlWebpackPlugin({
+      title: 'default',
+      hash: true,
+      inject: true,
+      chunks: ['default'],
+      template: './src/_includes/themes/jmblog-theme/theme/default.html',
+      filename: '_includes/themes/jmblog-theme/theme/default.html'
+    }),
     new HtmlWebpackPlugin({
       title: 'Holding page',
       hash: true,
       inject: true,
-      chunks: ['holding'],
-      template: './src/_includes/themes/jmblog-theme/theme/holding.html',
-      filename: '_includes/themes/jmblog-theme/theme/holding.html',
+      chunks: ['maintenance'],
+      template: './src/_includes/themes/jmblog-theme/theme/maintenance.html',
+      filename: '_includes/themes/jmblog-theme/theme/maintenance.html',
       'meta': {
         // 'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',
         // Will generate: <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -64,22 +69,22 @@ module.exports = {
         useShortDoctype: false
       }
     }),
-    new HtmlWebpackPlugin({
-      title: 'Error',
-      hash: true,
-      inject: true,
-      chunks: ['error'],
-      template: './src/_includes/themes/jmblog-theme/theme/error.html',
-      filename: '_includes/themes/jmblog-theme/theme/error.html',
-      minify: {
-        collapseWhitespace: false,
-        removeComments: false,
-        removeRedundantAttributes: false,
-        removeScriptTypeAttributes: false,
-        removeStyleLinkTypeAttributes: false,
-        useShortDoctype: false
-      }
-    }),
+    // new HtmlWebpackPlugin({
+    //   title: 'Error',
+    //   hash: true,
+    //   inject: true,
+    //   chunks: ['error'],
+    //   template: './src/_includes/themes/jmblog-theme/theme/error.html',
+    //   filename: '_includes/themes/jmblog-theme/theme/error.html',
+    //   minify: {
+    //     collapseWhitespace: false,
+    //     removeComments: false,
+    //     removeRedundantAttributes: false,
+    //     removeScriptTypeAttributes: false,
+    //     removeStyleLinkTypeAttributes: false,
+    //     useShortDoctype: false
+    //   }
+    // }),
     new CompressionPlugin({
       filename: '[path].br[query]',
       algorithm: 'brotliCompress',
@@ -102,10 +107,12 @@ module.exports = {
         { from: '_data', to: '_data' },
         { from: '_pages', to: '_pages' },
         { from: '_posts', to: '_posts' },
+        { from: '_authors', to: '_authors' },
 
         // { from: 'home.md', to: '.' },
         // { from: 'page.md', to: '.' },
 
+        { from: 'index.html', to: '.' },
         { from: 'README.md', to: '.' },
         { from: 'LICENSE.txt', to: '.' },
         { from: 'Gemfile', to: '.' },

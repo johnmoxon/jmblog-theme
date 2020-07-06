@@ -17,7 +17,6 @@
     {{ page.date | date_to_long_string }} - <small class="reading-time eta">calculating reading time...</small> -
 
     {% unless page.description == null %}
-    {% include themes/grayscale/components/share_buttons %}
     {% endunless %}
   </div>
 </div>
@@ -45,7 +44,7 @@
       </ul>
     </div>
     <hr>
-    {% include JB/comments %}
+
   </div>
 </section>
 </article>

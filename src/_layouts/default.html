@@ -3,8 +3,9 @@ theme :
   name : jmblog-theme
 ---
 {%comment%}
-Top level template - No markup
+Highest level template - No markup
 * Specifies the base html template -> themes/jmblog-theme/theme/default.html
+Cascades {{content}} tag down
 {%endcomment%}
 
-<div class="debug debug-layouts__default">{% include themes/jmblog-theme/theme/holding.html %}</div>
+{% include themes/jmblog-theme/theme/default.html %}

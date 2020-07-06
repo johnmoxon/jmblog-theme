@@ -1,9 +1,15 @@
 *.gem
 .bundle
 .sass-cache
+.vscode
+.post-template
 _site
 _data
 _pages
 _posts
+_drafts
+_authors
+index.html
+
 node_modules
 Gemfile.lock

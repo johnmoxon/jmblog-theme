@@ -1,0 +1,42 @@
+{% if page.author != null %}
+            {% assign author = site.authors | find: "name", page.author | first %}
+            {% comment %} page author is not null {% endcomment %}
+            {% else %}
+            {% assign author = site.authors | find: "name", site.author | first %}
+            {% comment %} page author is null revert to {{ site.author }} {% endcomment %}
+            {% endif %}
+
+            <div>
+                <figure class="image is-4by3 has-border-black mb-1">
+                    <img src="/assets/img/{{ author.image }}" alt="{{ author.name }}">
+                </figure>
+
+                <p class="title is-5">{{ author.name }}</p>
+                <p class="subtitle is-7">{{ author.position }}</p>
+
+
+                <p class="is-7">{{ author.summary }}</p>
+
+                <div class="mt-2">
+                	<a href="https://www.linkedin.com/in/{{ author.social.linkedin }}">
+                	    <span class="icon">
+                	        <i class="fab fa-linkedin-in has-text-black"></i>
+                	    </span>
+                	</a>
+                	<a href="https://twitter.com/{{ author.social.twitter }}">
+                	    <span class="icon">
+                	        <i class="fab fa-twitter has-text-black"></i>
+                	    </span>
+                	</a>
+                	<a href="https://medium.com/{{ author.social.medium }}">
+                	    <span class="icon">
+                	        <i class="fab fa-medium-m has-text-black"></i>
+                	    </span>
+                	</a>
+                	<a href="javascript:void(0)" class="bookmark-this">
+                	    <span class="icon">
+                	        <i class="far fa-bookmark has-text-black"></i>
+                	    </span>
+                	</a>
+                </div>
+            </div>

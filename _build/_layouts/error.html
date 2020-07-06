@@ -1,7 +1,11 @@
 ---
 theme :
-    name : jmblog-theme
-layout: default
+  name : jmblog-theme
 ---
+{%comment%}
+Top level template - No markup
+* Specifies the base html template -> themes/jmblog-theme/theme/default.html
+* Alternate to the `default` template
+{%endcomment%}
 
-<div class="debug debug-layouts__error">{% include themes/jmblog-theme/error.html %}</div>
+{% include themes/jmblog-theme/theme/maintenance.html %}

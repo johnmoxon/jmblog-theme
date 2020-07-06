@@ -1,0 +1,25 @@
+// breakpoint mixins
+@mixin for-phone-only {
+  @media (max-width: 599px) { @content; }
+}
+@mixin has-mobile-navbar {
+  @media (max-width: $navbar-breakpoint - 1px) { @content;}
+}
+@mixin has-standard-navbar {
+  @media (min-width: $navbar-breakpoint) { @content; }
+}
+@mixin for-touch-devices {
+  @media (max-width: $tablet) { @content; }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: $tablet) { @content; }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) { @content; }
+}
+@mixin for-desktop-up {
+  @media (min-width: $desktop) { @content; }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: $widescreen) { @content; }
+}

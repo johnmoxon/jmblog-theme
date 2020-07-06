@@ -1,0 +1,158 @@
+<!-- Featured post -->
+<div class="container">
+
+    <section class="section">
+        <a href="#">
+        <div class="card is-shadowless">
+        <h1 class="title is-3 padded-multiline">
+            <span>Watching a pandemic destroy your company and 5 reasons it will survive</span></h1>
+        <div class="card-image">
+            <figure class="image is-2by1">
+            <img src="/assets/img/balloon-3206530_1920.jpg" alt="Placeholder image">
+            </figure>
+        </div>
+        <div class="card-content">
+            <div class="media">
+            <div class="media-left">
+                <figure class="image is-48x48">
+                <img class="is-rounded" src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                </figure>
+            </div>
+            <div class="media-content">
+                <p class="title is-4">John Smith</p>
+                <p class="subtitle is-6">@johnsmith</p>
+            </div>
+            </div>
+
+            <div class="content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+            <a href="#">#css</a> <a href="#">#responsive</a>
+            <br>
+            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+            </div>
+        </div>
+        </div>
+        </a>
+    </section>
+
+    <hr>
+
+<!-- Main section -->
+    <section class="section">
+        <div class="columns">
+            <!-- Main area column -->
+            <div class="column is-two-thirds">
+                <h2 class="title is-3 is-uppercase">Recent Articles</h2>
+
+                <div class="article-list">
+
+                <!-- Article 1 -->
+
+
+                    <div class="card is-shadowless">
+                        <div class="columns is-gapless">
+                        <div class="column">
+                            <div class="card-image">
+                            <figure class="image is-4by5">
+                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                            </figure>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="card-content">
+                            <div class="media">
+                                <div class="media-left">
+                                <figure class="image is-48x48">
+                                    <img class="is-rounded" src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                                </figure>
+                                </div>
+                                <div class="media-content">
+                                <p class="title is-4">John Smith</p>
+                                <p class="subtitle is-6">@johnsmith</p>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                                <a href="#">#css</a> <a href="#">#responsive</a>
+                                <br>
+                                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+
+                    <hr>
+
+
+
+
+                    <!-- Article 2 -->
+                    <div class="card is-shadowless">
+                        <div class="columns is-gapless">
+                        <div class="column">
+                            <div class="card-image">
+                            <figure class="image is-4by5">
+                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                            </figure>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="card-content">
+                            <div class="media">
+                                <div class="media-left">
+                                <figure class="image is-48x48">
+                                    <img class="is-rounded" src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                                </figure>
+                                </div>
+                                <div class="media-content">
+                                <p class="title is-4">John Smith</p>
+                                <p class="subtitle is-6">@johnsmith</p>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                                <a href="#">#css</a> <a href="#">#responsive</a>
+                                <br>
+                                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- This loops through the paginated posts -->
+                {% for post in paginator.posts %}
+                <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+                <p class="author">
+                    <span class="date">{{ post.date }}</span>
+                </p>
+                <div class="content">
+                    {{ post.content }}
+                </div>
+                {% endfor %}
+
+                {% include themes/jmblog-theme/components/pagination_links.html %}
+
+
+            </div>
+
+            <!-- Right side column -- Author details -->
+            <div class="column">
+                <h2 class="title is-3 is-uppercase">The Author</h2>
+                {% include themes/jmblog-theme/components/author.html %}
+            </div>
+
+        </div>
+
+    </section>
+
+</div>

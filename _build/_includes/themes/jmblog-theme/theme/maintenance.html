@@ -1,0 +1,53 @@
+<div class="debug debug-themes__jmblog__theme__holding">
+<!DOCTYPE html>
+<html>
+  <head>
+    {% comment %}
+    Base template - this file should allow front end development without compiling jekyll build
+    Todo: in-line critical site elements to allow development of theme outside of jekyll workflow
+    {% endcomment %}
+    {% include themes/jmblog-theme/components/head.html %}
+  </head>
+  <body id="jmoxon">
+    {% include themes/jmblog-theme/components/analytics/googletagmanager_body.html %}
+  <!-- Header section -->
+  <main>
+    <section class="hero is-fullheight is-bold">
+      <div class="hero-body">
+        <div class="has-text-centered container">
+
+          <!-- Header intro -->
+          <div class="is-horizontal-center is-flex">
+            <figure class="image is-128x128">
+              <a href="/">
+              <img class="is-rounded" src="{{ page.peep-image | default: '/assets/img/head-shot-square.jpg' }}?nf_resize={{ page.peep_image_nfresize | default: 'fit' }}&w={{page.peep_image_nfresize_w | default: 128 }}&h={{page.peep_image_nfresize_h | default: 128}}" alt="John Moxon - BA">
+                <div class="is-rounded rounded-image-has-inner-shadow"></div>
+              </a>
+              </figure>
+          </div>
+          <h1 class="title is-size-1 is-size-2-mobile has-text-black is-family-secondary is-spaced">
+            <a href="/" class="has-text-black">{{ page.headline }}</a></h1>
+          {% unless page.quote == null %}
+          <h2 class="subtitle is-size-4 is-size-6-mobile">
+            {{ page.quote }} 
+            {% unless page.quote-attribution == null %}
+            - <span class="is-size-6">{{ page.quote-attribution }}</span>
+            {% endunless %}
+          </h2>
+          {% endunless %}
+
+          {{ content }}
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  {% include themes/jmblog-theme/components/footer.html %}
+
+  <!-- Include dataLayer -->
+  <!-- {% include dataLayer/dataLayer %} -->
+
+  <script src="/assets/js/maintenance.bundle.js?66e8e25aada0b6a540f9"></script></body>
+</html>
+</div>
