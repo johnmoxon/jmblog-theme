@@ -10,6 +10,7 @@ module.exports = {
   mode: 'production',
   entry: {
     default: './src/default/js/index.js',
+    vendor: './src/default/js/vendor.js',
     maintenance: './src/maintenance/js/index.js',
     // error: './src/error/js/error.js'
   },
@@ -37,7 +38,7 @@ module.exports = {
       title: 'default',
       hash: true,
       inject: true,
-      chunks: ['default'],
+      chunks: ['default', 'vendor'],
       template: './src/_includes/themes/jmblog-theme/theme/default.html',
       filename: '_includes/themes/jmblog-theme/theme/default.html'
     }),

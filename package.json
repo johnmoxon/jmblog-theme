@@ -28,6 +28,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "lazysizes": "^5.2.2",
     "netlify-plugin-pushover": "0.0.5"
   }
 }

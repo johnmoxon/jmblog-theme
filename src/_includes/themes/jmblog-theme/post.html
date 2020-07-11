@@ -1,50 +1,57 @@
-<article class="post post-single" data-words="{{ content | number_of_words}}">
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-10 is-offset-1">
 
-<div class="page-header">
-  {% unless page.intro.herounit == true %}
-  <h1>{{ page.title }} {% if page.tagline %}<small>{{page.tagline}}</small>{% endif %}</h1>
-  {% else %}
-  <h2 class="h1">{{ page.title }} {% if page.tagline %}<small>{{page.tagline}}</small>{% endif %}</h2>
-  {% endunless %}
-  <div class="post-date">
-    {% unless page.tags == empty %}
-    <ul class="tag-box list-inline pull-right hidden-xs hidden-sm">
-      {% assign tags_list = page.tags %}
-      {% assign nobadges = true %}
-      {% include JB/tags_list %}
-    </ul>
-    {% endunless %}
-    {{ page.date | date_to_long_string }} - <small class="reading-time eta">calculating reading time...</small> -
+        <article data-words="{{ content | number_of_words }}">
+          <h1 class="title is-2 is-family-secondary">{{ page.title }}</h1>
+          {% unless page.subtitle == null %}
+          <h2 class="subtitle is-4">{{ page.subtitle }}</h2>
+          {% endunless %}
+          <time class="is-size-7 has-text-black" datetime="{{ page.date | date_to_xmlschema }}"><em>{{ page.date | date: "%e %b" | append: " -" }}</em></time>
 
-    {% unless page.description == null %}
-    {% endunless %}
-  </div>
-</div>
+          {% assign postcontent = content %}
+          {% capture readingtime %}{% include themes/jmblog-theme/components/reading-time.html %}{% endcapture %}
+          {% if readingtime.size > 1 %}
+          <span class="is-size-7 has-text-black">{{ readingtime | strip }}</span>
+          {% endif %}
 
-<section class="row-fluid post-full">
-  <div class="span12">
-    <div class="content" id="{{page.id}}">
-      {{ content }}
+          {% include themes/jmblog-theme/components/share_buttons.html %}
+
+          <figure class="image is-3by2">
+            <img 
+              data-src="{{ page.image.path }}"
+              src="/assets/img/ph.png"
+              alt="Image by {{ page.image.author }} from {{ page.image.source }}" 
+              loading="lazy"
+              class="lazyload blur-up">
+          </figure>
+          <span class="is-size-7 mb-5 is-block">Image by <a href="{{ page.image.url }}">{{ page.image.author }}</a> from <a href="{{ page.image.url }}">{{ page.image.source }}</a></span>
+          
+          <div class="content is-double-spaced is-size-5 is-family-secondary">
+            {{content}}
+          </div>
+
+          {%- comment -%} <pre>{{ page | inspect }}</pre> {%- endcomment -%}
+        </article>
+        
+        <hr>
+        <h4 class="title is-6">The Author</h4>
+    
+        <hr>
+
+        
+        {% include themes/jmblog-theme/components/comments.html %}
+
+
+
+
+
+      </div>
     </div>
-
-    <hr>
-    <div class="">
-      <ul class="pager">
-      {% if page.previous %}
-        <li class="previous"><a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}" data-toggle="tooltip" data-placement="right">&larr; Previous</a></li>
-      {% else %}
-        <li class="previous disabled"><a>&larr; Previous</a></li>
-      {% endif %}
-        {% comment %}<li><a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">Archive</a></li>{% endcomment %}
-      {% if page.next %}
-        <li class="next"><a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}" data-toggle="tooltip" data-placement="left">Next &rarr;</a></li>
-      {% else %}
-        <li class="next disabled"><a>Next &rarr;</a>
-      {% endif %}
-      </ul>
-    </div>
-    <hr>
-
   </div>
 </section>
-</article>
+
+<!-- lazzy -->
+{% include themes/jmblog-theme/components/lazyload.html %}
+<!-- lazzy -->

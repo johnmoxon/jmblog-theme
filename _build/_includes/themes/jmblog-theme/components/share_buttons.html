@@ -1,0 +1,20 @@
+<span class="icons is-pulled-right">
+    <span class="is-size-7">share </span>
+    <span class="icon">
+        {%- comment -%} <a href="http://twitter.com/home?
+            status={{page.description | uri_escape}}%20{{site.production_url}}{{page.url | uri_escape}}" title="Share with twitter" data-toggle="tooltip" data-placement="top" data-provider="twitter"> {%- endcomment -%}
+        <a href="https://twitter.com/intent/tweet?url={{ page.url | prepend: site.url | uri_encode }}&text={{ page.summary | truncate: 130 | uri_escape }}&hashtags={{ page.tags | join: "," }}">
+            <i class="fab fa-twitter"></i>
+        </a>
+    </span>
+    <span class="icon">
+        <a href="https://www.facebook.com/sharer.php?u={{ page.url | prepend: site.url | uri_encode }}" title="Share with facebook">
+            <i class="fab fa-facebook"></i>
+        </a>
+    </span>
+    <span class="icon">
+        <a href="https://www.linkedin.com/shareArticle?url={{ page.url | prepend: site.url | uri_encode }}&mini=true&title={{ page.title | uri_escape }}&summary={{ page.summary | uri_escape }}&source={{ site.author | append: ' | ' | uri_escape }}{{ site.title | uri_escape }}" title="Share with facebook">
+            <i class="fab fa-linkedin"></i>
+        </a>
+    </span>
+</span>

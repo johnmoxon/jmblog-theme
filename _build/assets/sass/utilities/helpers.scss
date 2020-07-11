@@ -15,6 +15,10 @@
   top: 0;
 }
 
+.is-double-spaced{ 
+  line-height: 2rem;
+ }
+
 .has-vcentred-content{
   display: flex;
   justify-content: center;
@@ -27,4 +31,11 @@
 
 .has-border-black{
   border: 1px solid $black;
+}
+
+.is-ontop{
+  position: absolute;
+  z-index: 5;
+  left: 0.3rem;
+  bottom: 0.3rem;
 }

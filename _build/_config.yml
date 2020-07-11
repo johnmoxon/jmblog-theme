@@ -23,21 +23,22 @@ collections:
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Learn. Grow. Lead.
-tagline: "Lessons Learned Through A Digital Life"
+tagline: "Lessons Learned Through A Career In Digital Leadership"
 author: John Moxon
-email: john@jmoxon.net
+
 description: >- # this means to ignore newlines until "baseurl:"
   Personal blog for John Moxon | Digital Leader, Life-long-learner,
   Risk mitigator, Technology/Fintech evangelist and amateur 
   beer brewer. Writing articles about what I know and what I learn as I 
   find my own path in my career and life. 
+
 copyright: "copyright John Moxon 2020. All rights reserved."
 license: "copyright John Moxon 2020. All rights reserved."
 
 paginate: 5
 paginate_path: "/articles/page:num/"
 
-permalink: /:categories/:title
+# permalink: /:categories/:title
 relative_permalinks: false
 
 timezone: Australia/Brisbane
@@ -55,17 +56,6 @@ linkedin_username : https://www.linkedin.com/in/johnmoxon/
 medium_username : https://medium.com/@johnmoxon
 meeting_url: 'https://meetings.hubspot.com/jmoxon'
 
-
-# ---- Analytics ---- #
-analytics:
-  gtm:
-    tracking_id: GTM-WGHRT3
-  hubspot :
-    tracking_id : '7805952'
-
-
-
-
 # Build settings
 markdown: kramdown
 theme: jmblog-theme
@@ -73,8 +63,9 @@ plugins:
 - jekyll-gist
 - jekyll-mentions
 - jekyll-paginate
-- jekyll-feed
-- jekyll-sitemap
+# - jekyll-feed
+# - jekyll-sitemap
+- jekyll-seo-tag
 
 
 # Exclude from processing.
