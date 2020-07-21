@@ -16,6 +16,8 @@ $errortext: #c32836;
 $green: #28c3ab;
 $grey-dark: #111;
 
+$content-blockquote-background-color: $white;
+// $content-blockquote-border-left
 
 // // Custom vars
 $primary: $green;
@@ -32,4 +34,23 @@ $link: $primary;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
 
-$column-gap: 2.5rem;
+$column-gap: 2.2rem;
+
+blockquote {
+    background-color: white;
+    p{
+        font-size: 3rem;
+        text-align:center;
+        line-height: 3rem;
+        @include for-phone-only{
+            font-size: 1.8rem;
+            line-height: 2rem;
+        }
+    }
+
+    p cite { 
+        display: block;
+        font-size: 1rem;
+        text-align: right;
+     }
+}

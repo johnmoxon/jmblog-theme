@@ -2,18 +2,19 @@
 <html>
   <head>
     {% include themes/jmblog-theme/components/head.html %}
+    <%= htmlWebpackPlugin.tags.headTags %>
   </head>
   <body id="jmoxon">
     {% include themes/jmblog-theme/components/analytics/googletagmanager_body.html %}
   <!-- Header section -->
   <header>
-    <section class="hero">
-      <div class="hero-body">
+    <section class="section">
+      {% comment %} <div class="hero-body"> {% endcomment %}
         <div class="container has-text-centered">
-          <h2 class="subtitle is-size-4 is-spaced is-uppercase">{{ site.tagline | default: "Set a site level variable called 'tagline'" }}</h2>
-          <h1 class="title is-size-1 has-text-black is-family-secondary">{{ site.title }}</h1>
+          <h2 class="subtitle is-size-4 is-size-6-mobile is-spaced is-uppercase">{{ site.tagline | default: "Set a site level variable called 'tagline'" }}</h2>
+          <h1 class="title is-size-1 is-size-2-mobile has-text-black is-family-secondary"><a href="/" class="has-text-black">{{ site.title }}</a></h1>
         </div>
-      </div>
+      {% comment %} </div> {% endcomment %}
     </section>
   </header>
 
@@ -26,5 +27,7 @@
   <!-- Include dataLayer -->
   <!-- {% include dataLayer/dataLayer %} -->
 
+
+   <%= htmlWebpackPlugin.tags.bodyTags %>
   </body>
 </html>

@@ -3,14 +3,24 @@
 Wrap user content, potentially include components that
 render front matter as content
 {%endcomment%}
+<span class="is-block has-text-centered is-hidden-desktop">
+  <span class="icon">
+    <i class="fas fa-infinity"></i>
+    {%- comment -%} <i class="fas fa-paper-plane"></i> {%- endcomment -%}
+    {%- comment -%} <i class="fas fa-leaf"></i> {%- endcomment -%}
+    {%- comment -%} <i class="fas fa-grip-lines"></i> {%- endcomment -%}
+    {%- comment -%} <i class="fas fa-mug-hot"></i> {%- endcomment -%}
+  </span>
+</span>
 
-{% comment %} {% include themes/jmblog-theme/components/centred_buttons.html %} {% endcomment %}
-
-<!-- Summary -->
-<div class="columns has-text-centered">
-    <div class="column content">
-        {{ content }}
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-10 is-offset-1">
+                <div class="content">
+                    {{ content }}
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-
-{% comment %} {% include themes/jmblog-theme/components/social_buttons_large.html %} {% endcomment %}
+</section>

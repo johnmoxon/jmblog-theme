@@ -1,0 +1,73 @@
+<section class="hero is-dark">
+    <div class="hero-body">
+        <h4 class="title is-6 is-spaced">Related posts</h4>
+        
+        <div class="columns is-multiline">
+
+            {% assign maxRelated = 4 %}
+            {% assign minCommonTags = 1 %}
+            {% assign maxRelatedCounter = 0 %}
+
+            {% assign posts = site.posts |  where_exp: "item", "item.slug != page.slug" %}
+            {% for post in posts %}
+                {% assign sameTagCount = 0 %}
+
+                {% for category in post.categories %}
+                    {% if page.categories contains category %}
+                        {% assign sameTagCount = sameTagCount | plus: 1 %}
+                    {% endif %}
+                {% endfor %}
+
+                {% if sameTagCount >= minCommonTags %}
+                    <!-- START related component -->
+                    <div class="column is-one-quarter">
+                        <a href="{{ post.url }}">
+                        <div class="box has-min-height px-3 py-3 is-shadowless">
+                            <article class="media">
+                                <div class="media-left is-hidden-tablet-only">
+                                    <figure class="image is-64x64">
+                                        <img src="{{ post.image.path | default: '/assets/img/ph.png' | append: '?nf_resize=smartcrop&w=64&h=64' }}" alt="{{ post.title }}">
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <p class="is-size-6 has-text-black">
+                                        {{ post.title | truncatewords: 15 }}
+                                    </p>
+                                </div>
+                            </article>
+                        </div>
+                        </a>
+                    </div>
+
+
+                    <!-- END related component -->
+                    {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
+                    {% if maxRelatedCounter >= maxRelated %}
+                        {% break %}
+                    {% endif %}
+                {% endif %}
+
+            {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+            
+
+
+
+        </div>
+
+                    
+    </div>
+</section>                        
+                            
+
+

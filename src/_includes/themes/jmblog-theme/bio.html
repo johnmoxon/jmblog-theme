@@ -1,0 +1,45 @@
+{%comment%}
+Wrap user content, potentially include components that
+render front matter as content
+{%endcomment%}
+<span class="is-block has-text-centered is-hidden-desktop">
+  <span class="icon">
+    <i class="fas fa-infinity"></i>
+    {%- comment -%} <i class="fas fa-paper-plane"></i> {%- endcomment -%}
+    {%- comment -%} <i class="fas fa-leaf"></i> {%- endcomment -%}
+    {%- comment -%} <i class="fas fa-grip-lines"></i> {%- endcomment -%}
+    {%- comment -%} <i class="fas fa-mug-hot"></i> {%- endcomment -%}
+  </span>
+</span>
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-10 is-offset-1">
+                <div class="media">
+                    <figure class="media-left">
+                        <p class="image is-64x64">
+                        <img 
+                            src="/assets/img/{{ page.name | slugify: 'pretty' }}-square.jpg?nf_resize=fit&w=64&h=64" 
+                            alt="{{ page.name }}"
+                            class="is-rounded">
+                        </p>
+                    </figure>
+                    <div class="media-content">
+                        <div class="content">
+                            <p class="title is-5">
+                                <strong>{{ page.name }}</strong><br><small class="is-size-7">{{ page.position }}</small>
+                            </p>
+                            <p class="is-size-6">{{ content }}</p>
+                        </div>
+                        <nav class="level is-mobile">
+                            <div class="level-left">
+                                {% include themes/jmblog-theme/components/social_buttons_small.html %}
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

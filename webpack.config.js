@@ -6,13 +6,11 @@ const CopyPlugin = require('copy-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
-  // mode: 'development',
   mode: 'production',
   entry: {
     default: './src/default/js/index.js',
     vendor: './src/default/js/vendor.js',
-    maintenance: './src/maintenance/js/index.js',
-    // error: './src/error/js/error.js'
+    maintenance: './src/maintenance/js/index.js'
   },
   output: {
     path: path.resolve(__dirname, '_build'),
@@ -29,21 +27,21 @@ module.exports = {
   },
   devtool: false,
   plugins: [
-    new webpack.SourceMapDevToolPlugin({
-      filename: 'assets/js/[name].js.map',
-      exclude: ['vendor.bundle.js']
-    }),
+    
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
     new HtmlWebpackPlugin({
       title: 'default',
       hash: true,
-      inject: true,
-      chunks: ['default', 'vendor'],
+      inject: false,
+      chunks: [
+        'default',
+        'vendor'
+      ],
       template: './src/_includes/themes/jmblog-theme/theme/default.html',
       filename: '_includes/themes/jmblog-theme/theme/default.html'
     }),
     new HtmlWebpackPlugin({
-      title: 'Holding page',
+      title: 'Error page',
       hash: true,
       inject: true,
       chunks: ['maintenance'],
@@ -62,30 +60,14 @@ module.exports = {
         // Which equals to the following http header: `set-cookie: value; expires=date; path=url`
       },
       minify: {
-        collapseWhitespace: false,
-        removeComments: false,
-        removeRedundantAttributes: false,
-        removeScriptTypeAttributes: false,
-        removeStyleLinkTypeAttributes: false,
-        useShortDoctype: false
+        collapseWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true
       }
     }),
-    // new HtmlWebpackPlugin({
-    //   title: 'Error',
-    //   hash: true,
-    //   inject: true,
-    //   chunks: ['error'],
-    //   template: './src/_includes/themes/jmblog-theme/theme/error.html',
-    //   filename: '_includes/themes/jmblog-theme/theme/error.html',
-    //   minify: {
-    //     collapseWhitespace: false,
-    //     removeComments: false,
-    //     removeRedundantAttributes: false,
-    //     removeScriptTypeAttributes: false,
-    //     removeStyleLinkTypeAttributes: false,
-    //     useShortDoctype: false
-    //   }
-    // }),
     new CompressionPlugin({
       filename: '[path].br[query]',
       algorithm: 'brotliCompress',
@@ -98,39 +80,36 @@ module.exports = {
       minRatio: 0.8,
       deleteOriginalAssets: false,
     }),
+    new webpack.SourceMapDevToolPlugin({
+      filename: 'assets/js/[name].js.map',
+      exclude: ['vendor.bundle.js']
+    }),
     new CopyPlugin({
       patterns: [
         // { from: 'src/admin', to: 'admin' },
         { from: 'src/assets', to: 'assets' },
         { from: 'src/_includes', to: '_includes' },
         { from: 'src/_layouts', to: '_layouts' },
-        // 
-        { from: '_data', to: '_data' },
-        { from: '_pages', to: '_pages' },
-        { from: '_posts', to: '_posts' },
-        { from: '_authors', to: '_authors' },
 
-        // { from: 'home.md', to: '.' },
-        // { from: 'page.md', to: '.' },
-
-        { from: 'index.html', to: '.' },
         { from: 'README.md', to: '.' },
         { from: 'LICENSE.txt', to: '.' },
         { from: 'Gemfile', to: '.' },
         { from: 'Gemfile.lock', to: '.' },
         { from: 'jmblog-theme.gemspec', to: '.' },
         { from: '_config.yml', to: '.' },
-        // { from: 'src/jekyll' }
-        // { from: 'other', to: 'public' },
+
+        // Helpful for development 
+        { from: '_data', to: '_data' },
+        { from: '_pages', to: '_pages' },
+        { from: '_posts', to: '_posts' },
+        { from: '_authors', to: '_authors' },
+        { from: 'index.html', to: '.' }
+
       ],
       options: {
-        concurrency: 100,
+        concurrency: 1,
       },
     }),
-    // new CompressionPlugin({
-    //   test: /\.js(\?.*)?$/i,
-    // }),
-    
   ],
   // devServer: {
   //   contentBase: './_build',

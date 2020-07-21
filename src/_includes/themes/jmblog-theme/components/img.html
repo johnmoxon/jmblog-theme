@@ -1,0 +1,12 @@
+{% capture img_attrs %}
+?nf_resize={{ include.mode | default: 'fit' }}
+&w={{ include.w | default: 790 }}
+{% if include.h %}&h={{ include.h }}{% endif %}
+{% endcapture %}
+<figure class="image{{ include.res | default: 'is-3by2' | prepend: ' ' }}">
+  <img 
+    data-src="{{ include.src | default: '/assets/img/ph.png' }}{{ img_attrs | strip }}" 
+    data-lowsrc="{{ include.src | default: '/assets/img/ph.png' }}?nf_resize={{ include.mode | default: 'fit' }}&w=100"
+    alt="{{ include.alt | default: page.title }}"
+    class="lazyload blur-up">
+</figure>

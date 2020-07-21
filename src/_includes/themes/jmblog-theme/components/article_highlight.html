@@ -4,7 +4,11 @@
                                 <div class="card-image">
                                     <figure class="image is-4by5 is-relative">
                                         <a href="{{ post.url }}">
-                                        <img src="{{ post.image.path | default: "https://via.placeholder.com/290x362.png?text=image+is+4by5"}}" alt="Image by {{page.image.author}} on {{page.image.source}}">
+                                        <img 
+                                            data-src="{{ post.image.path | default: "https://via.placeholder.com/290x362.png?text=image+is+4by5"}}?nf_resize=smartcrop&w=290&h=362" 
+                                            data-lowsrc="{{ post.image.path | default: "https://via.placeholder.com/290x362.png?text=image+is+4by5"}}?nf_resize=smartcrop&w=72&h=90" 
+                                            alt="Image by {{page.image.author}} on {{page.image.source}}"
+                                            class="lazyload blur-up">
                                         </a>
                                         {% assign postcontent = post.content %}
                                         {% capture readingtime %}{% include themes/jmblog-theme/components/reading-time.html %}{% endcapture %}
@@ -23,7 +27,7 @@
                                         </figure>
                                         </div> {% endcomment %}
                                         <div class="media-content">
-                                        <p class="title is-4"><a href="{{post.url}}" class="has-text-black">{{ post.title }}</a></p>
+                                        <h2 class="title is-4"><a href="{{post.url}}" class="has-text-black">{{ post.title }}</a></h2>
                                         </div>
                                     </div>
 

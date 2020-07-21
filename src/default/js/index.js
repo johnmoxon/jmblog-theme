@@ -1,7 +1,6 @@
 //  Import custom styles
 import 'Assets/sass/base.scss';
 
-
 // Enable mobile nav banner
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -25,6 +24,15 @@ document.addEventListener('DOMContentLoaded', () => {
         el.classList.toggle('is-loading');
       });
     });
+  }
+
+  // If a post page, scroll to article start
+  if ( 
+      document.querySelector('#main_article') && 
+      document.querySelector('.navbar-burger').offsetParent !== null
+    ) {
+    const $scrollTarget = document.querySelector('#main_article');
+    $scrollTarget.scrollIntoView();
   }
 
   // Add handler for bookmark buttons

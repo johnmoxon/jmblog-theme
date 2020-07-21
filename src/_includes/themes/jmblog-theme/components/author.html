@@ -6,21 +6,40 @@
 {% comment %} page author is null revert to {{ site.author }} {% endcomment %}
 {% endif %}
 
-<div>
-	<figure class="image is-4by3 has-border-black mb-1">
-		<img class="" 
-			src="/assets/img/{{ author.image }}" 
-			alt="{{ author.name }}">
-	</figure>
+{%- comment -%} <div class="is-rounded rounded-image-has-inner-shadow"></div> {%- endcomment -%}
 
-	<p class="title is-5">{{ author.name }}</p>
-	<p class="subtitle is-7">{{ author.position }}</p>
+{% if include.sidebar == true %}
+<figure class="image is-4by3 has-border-black mb-1">
+	<img class="" 
+		src="/assets/img/{{ author.name | slugify: 'pretty' }}.jpg?nf_resize=fit&w=250" 
+		alt="{{ author.name }}">
+</figure>
+{% endif %}
 
-	{% unless include.show_summary == false %}
-	<p class="is-7">{{ author.summary }}</p>
-	{% endunless %}
-
-	<div class="mt-2">
-		{% include themes/jmblog-theme/components/social_buttons_small.html %}
-	</div>
+<div class="media">
+  {% unless include.sidebar == true %}
+  <figure class="media-left">
+    <p class="image is-64x64">
+      <img 
+	  	src="/assets/img/{{ author.name | slugify: 'pretty' }}-square.jpg?nf_resize=fit&w=64&h=64" 
+	  	alt="{{ author.name }}"
+		class="is-rounded">
+    </p>
+  </figure>
+  {% endunless %}
+  <div class="media-content">
+    <div class="content">
+      <p class="title is-5">
+		<strong>{{ author.name }}</strong><br><small class="is-size-7">{{ author.position }}</small>
+	  </p>
+      {% unless include.show_summary == false %}
+	  <p class="is-size-6">{{ author.summary }}</p>
+	  {% endunless %}
+    </div>
+    <nav class="level is-mobile">
+      <div class="level-left">
+        {% include themes/jmblog-theme/components/social_buttons_small.html %}
+      </div>
+    </nav>
+  </div>
 </div>

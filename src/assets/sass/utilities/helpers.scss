@@ -39,3 +39,10 @@
   left: 0.3rem;
   bottom: 0.3rem;
 }
+
+.is-ontop-right{
+  position: absolute;
+  z-index: 5;
+  right: 0.3rem;
+  bottom: 0.3rem;
+}

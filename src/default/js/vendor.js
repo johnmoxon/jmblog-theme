@@ -1,5 +1,3 @@
-// import lazySizes from 'lazysizes';
-// import 'lazysizes/plugins/parent-fit/ls.parent-fit';
-
-
-console.log("IMPORTED VENDOR JS");
+import lazySizes from 'lazysizes';
+import 'lazysizes/plugins/blur-up/ls.blur-up';
+lazySizes.cfg.blurupMode = 'auto';

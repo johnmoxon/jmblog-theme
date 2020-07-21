@@ -11,37 +11,34 @@
     <section class="section featured-post">
         <a href="{{ post.url }}">
         <div class="card is-shadowless">
-        <h1 class="title is-3 padded-multiline">
-            <span>{{post.title}}</span></h1>
+        <h2 class="title is-size-3 is-size-5-mobile padded-multiline">
+            <span>{{post.title}}
+            {% unless post.subtitle == null %} - {{ post.subtitle }}{% endunless %}
+            </span></h2>
         <div class="card-image">
             <figure class="image is-2by1 is-relative">
-            <img src="/assets/img/balloon-3206530_1920.jpg" alt="Placeholder image">
-            {% assign postcontent = post.content %}
+            <a href="{{ post.url }}">
+                <img 
+                    data-src="{{ post.image.path | default: 'https://via.placeholder.com/910x455.png' | append: '?nf_resize=fit&w=910'}}" 
+                    data-lowsrc="{{ post.image.path | default: 'https://via.placeholder.com/910x455.png' | append: '?nf_resize=fit&w=100'}}" 
+                    alt="Image by {{page.image.author}} on {{page.image.source}}"
+                    class="lazyload blur-up">
+            </a>
+            {% assign postcontent = post.content %}{% comment  %}TODO: improve this as a include parameter{% endcomment %}
             {% capture readingtime %}{% include themes/jmblog-theme/components/reading-time.html %}{% endcapture %}
             {% if readingtime.size > 1 %}
-            <span class="tag is-white is-ontop">{{ readingtime | strip }}</span>
+            <span class="tag is-white is-ontop-right">{{ readingtime | strip }}</span>
             {% endif %}
             </figure>
         </div>
         <div class="card-content">
             
-            {%- comment -%}
-            <div class="media">
-                <div class="media-left">
-                    <figure class="image is-48x48">
-                        <img class="is-rounded" src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-                        
-                    </figure>
-                </div>
-                 <div class="media-content">
-                    <p class="title is-4">John Smith</p>
-                    <p class="subtitle is-6">@johnsmith</p>
-                </div> 
-            </div>
-            {%- endcomment -%}
+            
 
             <div class="content">
-            {{ post.summary }}
+            <a href="{{ post.url }}" class="has-text-black">
+                {{ post.summary }}
+            </a>
             </div>
             <div class="tags">
                 {% for tag in post.tags %}
@@ -82,35 +79,12 @@
 
                 {% include themes/jmblog-theme/components/pagination_links.html %}
 
-
-                    
-
-{% comment %} 
-                <!-- This loops through the paginated posts -->
-                
-                {% if iter == "first" %}
-                latest
-                {% assign iter = null %}
-                {%else%}
-                regular
-                {%endif%}
-                <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
-                <p class="author">
-                    <span class="date">{{ post.date }}</span>
-                </p>
-                <div class="content">
-                    {{ post.content }}
-                </div>
-                {% endfor %} {% endcomment %}
-
-
-
             </div><!-- end left column -->
 
             <!-- Right side column -- Author details -->
             <div class="column">
                 <h2 class="title is-3 is-uppercase">The Author</h2>
-                {% include themes/jmblog-theme/components/author.html %}
+                {% include themes/jmblog-theme/components/author.html sidebar=true %}
             </div>
 
         </div><!-- End columns container -->

@@ -1,12 +1,24 @@
-<section class="section">
+<span class="is-block has-text-centered is-hidden-desktop">
+  <span class="icon">
+    <i class="fas fa-infinity"></i>
+    {%- comment -%} <i class="fas fa-paper-plane"></i> {%- endcomment -%}
+    {%- comment -%} <i class="fas fa-leaf"></i> {%- endcomment -%}
+    {%- comment -%} <i class="fas fa-grip-lines"></i> {%- endcomment -%}
+    {%- comment -%} <i class="fas fa-mug-hot"></i> {%- endcomment -%}
+  </span>
+</span>
+{%- comment -%} <span class="is-size-3 is-block is-family-secondary has-text-centered"></span> {%- endcomment -%}
+<section class="section" id="main_article">
   <div class="container">
     <div class="columns">
       <div class="column is-10 is-offset-1">
 
-        <article data-words="{{ content | number_of_words }}">
-          <h1 class="title is-2 is-family-secondary">{{ page.title }}</h1>
+        <article 
+          data-words="{{ content | number_of_words }}" 
+          class="pb-4">
+          <h1 class="title is-2 is-family-secondary" id="article_heading">{{ page.title }}</h1>
           {% unless page.subtitle == null %}
-          <h2 class="subtitle is-4">{{ page.subtitle }}</h2>
+          <h2 class="subtitle is-6 is-uppercase">{{ page.subtitle }}</h2>
           {% endunless %}
           <time class="is-size-7 has-text-black" datetime="{{ page.date | date_to_xmlschema }}"><em>{{ page.date | date: "%e %b" | append: " -" }}</em></time>
 
@@ -17,41 +29,49 @@
           {% endif %}
 
           {% include themes/jmblog-theme/components/share_buttons.html %}
-
-          <figure class="image is-3by2">
-            <img 
-              data-src="{{ page.image.path }}"
-              src="/assets/img/ph.png"
-              alt="Image by {{ page.image.author }} from {{ page.image.source }}" 
-              loading="lazy"
-              class="lazyload blur-up">
-          </figure>
+          {% include themes/jmblog-theme/components/img.html src=page.image.path alt=page.title %}
           <span class="is-size-7 mb-5 is-block">Image by <a href="{{ page.image.url }}">{{ page.image.author }}</a> from <a href="{{ page.image.url }}">{{ page.image.source }}</a></span>
           
-          <div class="content is-double-spaced is-size-5 is-family-secondary">
+          <div class="content is-double-spaced is-size-5 is-family-secondary pb-6">
             {{content}}
           </div>
 
-          {%- comment -%} <pre>{{ page | inspect }}</pre> {%- endcomment -%}
+          <div class="columns is-mobile">
+            <div class="column">
+              <div class="tags">
+              {% if page.tags.size > 0 %}
+                {% for tag in page.tags %}
+                <span class="tag">#{{ tag }}</span>
+                {% endfor %}
+              {% endif %}
+              </div>
+            </div>
+            <div class="column">
+              {% include themes/jmblog-theme/components/share_buttons.html %}
+            </div>
+          </div>
+{%- comment -%} 
+          <div class="is-clearfix">
+            {% if page.tags.size > 0 %}
+              {% for tag in page.tags %}
+              <span class="tag">#{{ tag }}</span>
+              {% endfor %}
+            {% endif %}
+            {% include themes/jmblog-theme/components/share_buttons.html %}
+          </div> {%- endcomment -%}
+
+        <hr>
         </article>
         
-        <hr>
         <h4 class="title is-6">The Author</h4>
+        {% include themes/jmblog-theme/components/author.html is_media_object=true %}
     
         <hr>
 
-        
         {% include themes/jmblog-theme/components/comments.html %}
-
-
-
-
 
       </div>
     </div>
   </div>
 </section>
-
-<!-- lazzy -->
-{% include themes/jmblog-theme/components/lazyload.html %}
-<!-- lazzy -->
+{% include themes/jmblog-theme/components/related_articles.html %}
