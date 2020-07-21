@@ -13,7 +13,13 @@ Gem::Specification.new do |spec|
   require 'rake'
   spec.files         = FileList['_layouts/**/*', 
                                 '_includes/**/*',
+                                '_authors/**/*',
+                                '_data/**/*',
+                                '_pages/**/*',
+                                '_posts/**/*',
                                 'assets/**/*',
+                                '_config.yml',
+                                'index.html',
                                 'LICENSE.txt',
                                 'README.md'].to_a
 

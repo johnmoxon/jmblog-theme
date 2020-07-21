@@ -52,7 +52,7 @@ analytics:
 
 # Build settings
 markdown: kramdown
-  theme: jmblog-theme
+theme: jmblog-theme
 
 # Currently only plugins used that are supported on github pages, though now using netlify so may swap out for pagination v2 in the future
 plugins:
