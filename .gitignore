@@ -4,6 +4,7 @@
 .vscode
 .post-template
 _site
+_build
 index.html
 
 node_modules
