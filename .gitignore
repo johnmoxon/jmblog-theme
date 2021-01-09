@@ -5,7 +5,7 @@
 .post-template
 _site
 _build
-index.html
+#index.html
 
 node_modules
 Gemfile.lock
