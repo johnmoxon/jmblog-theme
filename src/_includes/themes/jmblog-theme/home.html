@@ -19,8 +19,8 @@
             <figure class="image is-2by1 is-relative">
             <a href="{{ post.url }}">
                 <img 
-                    data-src="{{ post.image.path | default: 'https://via.placeholder.com/910x455.png' | append: '?nf_resize=fit&w=910'}}" 
-                    data-lowsrc="{{ post.image.path | default: 'https://via.placeholder.com/910x455.png' | append: '?nf_resize=fit&w=100'}}" 
+                    data-src="{{ post.image.path | default: 'https://via.placeholder.com/910x455.png' | append: '?nf_resize=smartcrop&w=910&h=455'}}" 
+                    data-lowsrc="{{ post.image.path | default: 'https://via.placeholder.com/910x455.png' | append: '?nf_resize=smartcrop&w=100&h=50'}}" 
                     alt="Image by {{page.image.author}} on {{page.image.source}}"
                     class="lazyload blur-up">
             </a>
