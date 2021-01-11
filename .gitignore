@@ -1,4 +1,7 @@
+__*
+.jekyll-metadata
 *.gem
+.archive
 .bundle
 .sass-cache
 .vscode
