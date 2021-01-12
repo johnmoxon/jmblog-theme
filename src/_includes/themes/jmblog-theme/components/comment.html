@@ -38,7 +38,7 @@ include.is_reply %} child{% endif %}{% endcapture %}
 {%- assign date = reply.date -%}
 {%- assign message = reply.message -%}
 {%- assign uid = reply._id -%}
-{% include comment.html is_reply=true uid=uid email=email name=name url=url date=date message=message %}
+{% include themes/jmblog-theme/components/comment.html is_reply=true uid=uid email=email name=name url=url date=date message=message %}
 {% endfor %}
 
 <hr style="border-top: 1px solid #ccc; background: transparent; margin-bottom: 10px;">

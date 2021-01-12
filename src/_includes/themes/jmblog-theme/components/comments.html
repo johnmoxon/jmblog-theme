@@ -13,7 +13,7 @@
         {%- assign date = comment.date %}
         {%- assign message = comment.message %}
         {%- assign uid = comment._id %}
-        {% include comment.html is_reply=false uid=uid replying_to=0 email=email name=name url=url date=date
+        {% include themes/jmblog-theme/components/comment.html is_reply=false uid=uid replying_to=0 email=email name=name url=url date=date
         message=message uid=uid %}
         {% endfor %}
     </div>
@@ -21,7 +21,7 @@
 
     <!-- New comment form -->
     <div id="respond" class="comment__new">
-        {% include comment_form.html %}
+        {% include themes/jmblog-theme/components/comment_form.html %}
     </div>
 </section>
 
