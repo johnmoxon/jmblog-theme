@@ -20,10 +20,13 @@
     </div>
     {% endif %}
 
+    {% unless page.comments == "closed" %}
     <!-- New comment form -->
     <div id="respond" class="comment__new">
-        {% include themes/jmblog-theme/components/comment_form.html %}
+        {% capture first_comment %}{% if comments.size < 1 %}true{% else %}false{% endif %}{% endcapture %}
+        {% include themes/jmblog-theme/components/comment_form.html first_comment=first_comment %}
     </div>
+    {% endunless %}
 </section>
 
 {%- comment %} <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> {% endcomment -%}

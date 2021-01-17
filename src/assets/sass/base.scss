@@ -32,12 +32,13 @@ $navbar-padding-horizontal: 4rem;
 @import "~bulma/sass/elements/title";
 
 // Form
+// @import "~bulma/sass/form/_all";
+@import "~bulma/sass/form/shared";
+@import "~bulma/sass/form/tools";
+@import "~bulma/sass/form/input-textarea";
+@import "~bulma/sass/form/select";
 // @import "~bulma/sass/form/checkbox-radio";
 // @import "~bulma/sass/form/file";
-// @import "~bulma/sass/form/input-textarea";
-// @import "~bulma/sass/form/select";
-// @import "~bulma/sass/form/shared";
-// @import "~bulma/sass/form/tools";
 
 
 // Components

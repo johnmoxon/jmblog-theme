@@ -1,4 +1,4 @@
-<form class="js-form form" method="post" action="{{ site.staticman_url }}">
+<form class="comments-form form" method="post" action="{{ site.staticman_url }}">
     <input type="hidden" name="options[origin]" value="{{ page.url | absolute_url }}">
     <input type="hidden" name="options[parent]" value="{{ page.url | absolute_url }}">
     <input type="hidden" id="comment-replying-to-uid" name="fields[replying_to_uid]" value="">
@@ -7,7 +7,9 @@
     <input type="hidden" name="options[reCaptcha][secret]"  value="{{ site.reCaptcha.secret }}">
 
     <div class="field">
-        <label class="label">Add Comment
+        <label class="label" for="comment-form-message">
+        {% if include.first_comment %}Be The First To {% endif %}
+        Leave A Comment
             <small>
                 <a class="button" 
                     rel="nofollow" 
@@ -17,18 +19,18 @@
             </small>
         </label>
         <div class="control">
-            <textarea class="textarea" 
+            <textarea class="textarea comments-field" 
                 name="fields[message]"
                 id="comment-form-message"
-                placeholder="Your commments (markdown accepted)"
+                placeholder="Your comment (markdown accepted)"
                 required></textarea>
         </div>
     </div>
 
     <div class="field">
-        <label class="label">Name</label>
+        <label class="label" for="comment-form-name">Name</label>
         <div class="control has-icons-left">
-            <input class="input" 
+            <input class="input comments-field" 
                 name="fields[name]"
                 id="comment-form-name"
                 type="text" 
@@ -41,40 +43,42 @@
     </div>
 
     <div class="field">
-        <label class="label">Emaill</label>
+        <label class="label">Email</label>
         <div class="control has-icons-left">
-            <input class="input" 
+            <input class="input comments-field" 
                 name="fields[email]"
                 id="comment-form-email"
                 type="email" 
-                placeholder="Your email (optional)"
-                required>
+                placeholder="Your email (optional)">
             <span class="icon is-small is-left">
                 <i class="fas fa-envelope"></i>
             </span>
         </div>
     </div>
 
-    <div class="textfield narrowfield">
-        <label for="comment-form-email">E-mail
-        <input class="textfield__input" name="fields[email]" type="email" id="comment-form-email" placeholder=""/>
-        </label>
+    <div class="is-hidden field textfield narrowfield hp">
+        <label class="label">Website</label>
+        <div class="control has-icons-left">
+            <input class="textfield__input input" 
+                name="fields[hp]" 
+                id="hp" 
+                type="text" 
+                placeholder="Leave blank">
+            <span class="icon is-small is-left">
+                <i class="fas fa-globe-africa"></i>
+            </span>
+        </div>
     </div>
 
-    <div class="textfield narrowfield hp">
-        <label for="hp">
-        <input class="textfield__input" name="fields[hp]" id="hp" type="text" placeholder="Leave blank">
-        </label>
-    </div>
+    {% comment %} <div id="reCaptcha" class="g-recaptcha" data-sitekey="{{ site.reCaptcha.siteKey }}"></div> {% endcomment %}
 
-    <div id="reCaptcha" class="g-recaptcha" data-sitekey="{{ site.reCaptcha.siteKey }}"></div>
-
-    <button class="button" id="comment-form-submit">
+    <button class="button is-primary" id="comment-form-submit">
         Submit
     </button>
 
 </form>
 
+{% comment %} 
 <article class="modal mdl-card mdl-shadow--2dp">
   <div>
     <h3 class="modal-title js-modal-title"></h3>
@@ -83,12 +87,7 @@
   <div class="mdl-card__actions mdl-card--border">
     <button class="button mdl-button--colored mdl-js-button mdl-js-ripple-effect js-close-modal">Close</button>
   </div>
-</article>
-
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none" >
-  <symbol id="icon-loading" viewBox="149.8 37.8 499.818 525"><path d="M557.8 187.8c13.8 0 24.601-10.8 24.601-24.6S571.6 138.6 557.8 138.6s-24.6 10.8-24.6 24.6c0 13.2 10.8 24.6 24.6 24.6zm61.2 90.6c-16.8 0-30.6 13.8-30.6 30.6s13.8 30.6 30.6 30.6 30.6-13.8 30.6-30.6c.6-16.8-13.2-30.6-30.6-30.6zm-61.2 145.2c-20.399 0-36.6 16.2-36.6 36.601 0 20.399 16.2 36.6 36.6 36.6 20.4 0 36.601-16.2 36.601-36.6C595 439.8 578.2 423.6 557.8 423.6zM409 476.4c-24 0-43.2 19.199-43.2 43.199s19.2 43.2 43.2 43.2 43.2-19.2 43.2-43.2S433 476.4 409 476.4zM260.8 411c-27 0-49.2 22.2-49.2 49.2s22.2 49.2 49.2 49.2 49.2-22.2 49.2-49.2-22.2-49.2-49.2-49.2zm-10.2-102c0-27.6-22.8-50.4-50.4-50.4-27.6 0-50.4 22.8-50.4 50.4 0 27.6 22.8 50.4 50.4 50.4 27.6 0 50.4-22.2 50.4-50.4zm10.2-199.8c-30 0-54 24-54 54s24 54 54 54 54-24 54-54-24.6-54-54-54zM409 37.8c-35.4 0-63.6 28.8-63.6 63.6S374.2 165 409 165s63.6-28.8 63.6-63.6-28.2-63.6-63.6-63.6z"/>
-  </symbol>
-</svg>
+</article> {% endcomment %}
 
 {% comment %}
 	from: https://github.com/eduardoboucas/popcorn/blob/gh-pages/_includes/modal.html

@@ -29,6 +29,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "netlify-plugin-pushover": "0.0.5"
+    "netlify-plugin-pushover": "0.0.5",
+    "yup": "^0.32.8"
   }
 }

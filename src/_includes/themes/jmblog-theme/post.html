@@ -56,9 +56,10 @@
         <h4 class="title is-6">The Author</h4>
         {% include themes/jmblog-theme/components/author.html is_media_object=true %}
     
+        {% if page.comments %}
         <hr>
-
         {% include themes/jmblog-theme/components/comments.html %}
+        {% endif %}
 
       </div>
     </div>
