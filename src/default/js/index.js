@@ -3,6 +3,7 @@ import 'Assets/sass/base.scss';
 
 import * as yup from 'yup';
 
+
 // Enable mobile nav banner
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -32,11 +33,54 @@ document.addEventListener('DOMContentLoaded', () => {
   const $comments = Array.prototype.slice.call(document.querySelectorAll('.comments-form'), 0);
   if ($comments.length > 0) {
     $comments.forEach( el => {
-      el.addEventListener('submit', function(evt){
-        
-        evt.preventDefault();
 
-        
+      // build and insert the notification container 
+      const baseNotificationEl = document.createElement("div");
+      baseNotificationEl.classList.add(
+          "notification", 
+          "is-light", 
+          "is-size-7", 
+          "is-hidden");
+      baseNotificationEl.innerHTML = '<button class="delete"></button><p class="messages">messages</p>';
+      el.before(baseNotificationEl);
+      const notificationText = baseNotificationEl.querySelector(".messages");
+      window.notificationText = notificationText;
+      window.baseNotificationEl = baseNotificationEl;
+
+      // quick function to add a notification
+      const set_notification = function (message, type) {
+        notificationText.innerText = String(message);
+        baseNotificationEl.classList.remove("is-hidden", "is-danger", "is-success", "is-info");
+        switch (String(type)) {
+          case 'error':
+            baseNotificationEl.classList.add("is-danger");
+            break;
+          case 'success':
+            baseNotificationEl.classList.add("is-success");
+            break;
+          case 'info':
+          default:
+            baseNotificationEl.classList.add("is-info");
+        }
+
+        baseNotificationEl.classList.remove("is-hidden");
+
+      }
+
+      // quick function to reset messages
+      const clear_notication = function () {
+        notificationText.innerText = 'cleared';
+        baseNotificationEl.classList.remove("is-danger", "is-success", "is-info");
+        baseNotificationEl.classList.add("is-hidden");
+      }
+
+      window.set_notification = set_notification;
+      window.clear_notication = clear_notication;
+      
+
+      el.addEventListener('submit', function(evt){
+        // halt native form submit
+        evt.preventDefault();
 
         // Create a schema
         let schema = yup.object().shape({
@@ -60,73 +104,64 @@ document.addEventListener('DOMContentLoaded', () => {
             .matches(/^[a-zA-Z0-9-]+$/i, "There was a problem please refresh and try again")
         });
 
-
-        // get the fields
+        // get the fields and build the payload
         let formFields = document.querySelectorAll('.comments-form input, .comments-form textarea');
         let commentsData = {};
         Array.prototype.forEach.call(formFields, function (field, i) {
           commentsData[field.name] = field.value;
         });
 
+        // Validate the inputs and 
         schema
           .validate(commentsData)
-          .catch(function (err) {
-            // Show the error message and exit
-            console.error(err.name);
-            console.info(err.errors);
-          })
           .then(function (valid) {
             // Clear any error messages, send the request, show spinner, clear form and show message
-            let formAction = el.getAttribute('action');
-            fetch(formAction, {
-              method: 'post',
-              body: JSON.stringify(valid)
+            clear_notication();
+
+            // Set the button to loading
+            document.querySelector('#comment-form-submit').classList.toggle('is-loading');
+            
+            let url = new URL(el.getAttribute('action'));
+            url.search = new URLSearchParams(valid).toString();
+            fetch(url, {
+              method: 'post'
             })
-            .then(function( data) {
-              alert("comment posted - check pull request");
-              console.log(data);
+            .then(function( data ) {
+              // Check response
+              if ( data.status == 200 ) {
+                // Show success message
+                set_notification("Your comment has been successfully submitted for \
+                  moderation and if everything looks okay will appear on this page soon", 
+                  "success");
+                
+                // Clear the form & reset the button
+                document.querySelector('.comments-form').reset()
+              }
+              else {
+                // non-successful response returned
+                set_notification("Oh no! there was a problem submitting your comment, \
+                  it's us not you! Please refresh the page and try again", 
+                  "error");
+              }
+
+
             })
             .catch(function (err) {
-              alert("bummer")
+              // Post request failed
+              set_notification("Oh no! there was a problem submitting your comment, \
+                  it's us not you! Please refresh the page and try again", 
+                  "error");
             });
+          })
+          .catch(function (err) {
+            // Show the error message and exit
+            // console.error(err.name);
+            // console.info(err.errors);
+            set_notification("There was a validation error", 
+                  "error");
+            console.log("validation error");
+            console.log(err);
           });
-        
-        
-        // schema
-        //   .validate({
-        //     "fields[name]": "jimmy O`Conner",
-        //     "fields[message]": 'this is a message',
-        //     "fields[email]": 'john@jmoxon.net'
-        //   })
-        //   .catch(function (err) {
-        //     // Show the error message and exit
-        //     console.error(err.name);
-        //     console.error(err.errors);
-        //   })
-        //   .then(function (valid) {
-        //     // Clear any error messages, send the request, show spinner, clear form and show message
-        //     console.log(valid)
-        //   });
-
-
-        // Check honeypot
-
-
-
-
-        
-        // check required fields
-        // Array.prototype.slice.call($comments.querySelectorAll('.comments-field'), 0).forEach(el => {
-          // console.log("Found field: " + el.getAttribute('name'))
-        // });
-        
-        
-        // Validate and sanitise inputs
-        
-        // construct fetch requests
-        
-        // clear form, reset button and display the success notification 
-        
       });
     });
   }
