@@ -44,8 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
       baseNotificationEl.innerHTML = '<p class="messages">messages</p>';
       el.before(baseNotificationEl);
       const notificationText = baseNotificationEl.querySelector(".messages");
-      window.notificationText = notificationText;
-      window.baseNotificationEl = baseNotificationEl;
+      // window.notificationText = notificationText;
+      // window.baseNotificationEl = baseNotificationEl;
 
       // quick function to add a notification
       const set_notification = function (message, type) {
@@ -74,9 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
         baseNotificationEl.classList.add("is-hidden");
       }
 
-      window.set_notification = set_notification;
-      window.clear_notication = clear_notication;
-      
+      // window.set_notification = set_notification;
+      // window.clear_notication = clear_notication;
+      window.el = el;
 
       el.addEventListener('submit', function(evt){
         // halt native form submit
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // get the fields and build the payload
-        let formFields = document.querySelectorAll('.comments-form input, .comments-form textarea');
+        let formFields = el.querySelectorAll('.comments-form input, .comments-form textarea');
         let commentsData = {};
         Array.prototype.forEach.call(formFields, function (field, i) {
           commentsData[field.name] = field.value;
@@ -120,8 +120,16 @@ document.addEventListener('DOMContentLoaded', () => {
             clear_notication();
 
             // Set the button to loading
-            document.querySelector('#comment-form-submit').classList.toggle('is-loading');
+            el.querySelector('#comment-form-submit').classList.toggle('is-loading');
+
+            let reCaptchaSiteKey = el.querySelector('input[name="options[reCaptcha][siteKey]"]').value;
             
+            grecaptcha.ready(function () {
+              grecaptcha.execute(reCaptchaSiteKey, { action: 'submit' }).then(function (token) {
+                // Add your logic to submit to your backend server here.
+              });
+            });
+
             let url = new URL(el.getAttribute('action'));
             url.search = new URLSearchParams(valid).toString();
             fetch(url, {
@@ -151,6 +159,8 @@ document.addEventListener('DOMContentLoaded', () => {
                   it's us not you! Please refresh the page and try again", 
                   "error");
             });
+
+
           })
           .catch(function (err) {
             // Show the error message and exit
