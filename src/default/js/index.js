@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
           "is-light", 
           "is-size-7", 
           "is-hidden");
-      baseNotificationEl.innerHTML = '<button class="delete"></button><p class="messages">messages</p>';
+      baseNotificationEl.innerHTML = '<p class="messages">messages</p>';
       el.before(baseNotificationEl);
       const notificationText = baseNotificationEl.querySelector(".messages");
       window.notificationText = notificationText;
@@ -62,9 +62,9 @@ document.addEventListener('DOMContentLoaded', () => {
           default:
             baseNotificationEl.classList.add("is-info");
         }
-
         baseNotificationEl.classList.remove("is-hidden");
 
+        baseNotificationEl.scrollIntoView();
       }
 
       // quick function to reset messages
@@ -84,7 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Create a schema
         let schema = yup.object().shape({
-          "fields[message]": yup.string().required("Comment message is required"),
+          "fields[message]": yup.string()
+            .required("Comment message is required"),
           "fields[name]": yup.string()
             .required("Name is a required field")
             .matches(/^(?:(?![×Þß÷þø])[-'`0-9a-zÀ-ÿ\s])+$/i, "Name must not contain special characters"),
@@ -143,8 +144,6 @@ document.addEventListener('DOMContentLoaded', () => {
                   it's us not you! Please refresh the page and try again", 
                   "error");
               }
-
-
             })
             .catch(function (err) {
               // Post request failed
@@ -155,12 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
           })
           .catch(function (err) {
             // Show the error message and exit
-            // console.error(err.name);
-            // console.info(err.errors);
-            set_notification("There was a validation error", 
-                  "error");
-            console.log("validation error");
-            console.log(err);
+            set_notification(err.message, "error");
           });
       });
     });
