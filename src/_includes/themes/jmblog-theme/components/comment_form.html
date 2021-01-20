@@ -70,9 +70,14 @@
         </div>
     </div>
 
-    {% comment %} <div id="reCaptcha" class="g-recaptcha" data-sitekey="{{ site.reCaptcha.siteKey }}"></div> {% endcomment %}
+    <div id="reCaptcha" 
+        class="g-recaptcha" 
+        data-sitekey="{{ site.reCaptcha.siteKey }}">
+    </div>
 
-    <button class="button is-primary" id="comment-form-submit">
+    <button 
+        class="button is-primary" 
+        id="comment-form-submit">
         Submit
     </button>
 

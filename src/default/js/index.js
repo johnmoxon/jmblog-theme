@@ -120,22 +120,24 @@ document.addEventListener('DOMContentLoaded', () => {
             clear_notication();
 
             // Set the button to loading
-            el.querySelector('#comment-form-submit').classList.toggle('is-loading');
+            el.querySelector('#comment-form-submit').classList.add('is-loading');
 
             let reCaptchaSiteKey = el.querySelector('input[name="options[reCaptcha][siteKey]"]').value;
             
-            grecaptcha.ready(function () {
-              grecaptcha.execute(reCaptchaSiteKey, { action: 'submit' }).then(function (token) {
-                // Add your logic to submit to your backend server here.
-              });
-            });
+            // grecaptcha.ready(function () {
+            //   grecaptcha.execute(reCaptchaSiteKey, { action: 'submit' }).then(function (token) {
+            //     // Add your logic to submit to your backend server here.
+            //   });
+            // });
 
             let url = new URL(el.getAttribute('action'));
             url.search = new URLSearchParams(valid).toString();
             fetch(url, {
-              method: 'post'
+              method: 'post',
+              data: valid
             })
             .then(function( data ) {
+              console.log('sending request');
               // Check response
               if ( data.status == 200 ) {
                 // Show success message
@@ -144,27 +146,35 @@ document.addEventListener('DOMContentLoaded', () => {
                   "success");
                 
                 // Clear the form & reset the button
-                document.querySelector('.comments-form').reset()
+                document.querySelector('.comments-form').reset();
+                el.querySelector('#comment-form-submit').classList.remove('is-loading');
+                grecaptcha.reset();
               }
               else {
                 // non-successful response returned
                 set_notification("Oh no! there was a problem submitting your comment, \
                   it's us not you! Please refresh the page and try again", 
                   "error");
+                el.querySelector('#comment-form-submit').classList.remove('is-loading');
+                grecaptcha.reset();
               }
             })
             .catch(function (err) {
               // Post request failed
               set_notification("Oh no! there was a problem submitting your comment, \
-                  it's us not you! Please refresh the page and try again", 
-                  "error");
+                it's us not you! Please refresh the page and try again", 
+                "error");
+              el.querySelector('#comment-form-submit').classList.remove('is-loading');
+              grecaptcha.reset();
             });
 
 
           })
           .catch(function (err) {
+            // Validation error message
             // Show the error message and exit
             set_notification(err.message, "error");
+            grecaptcha.reset();
           });
       });
     });
