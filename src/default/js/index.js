@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // get the fields and build the payload
         let formFields = el.querySelectorAll('.comments-form input, .comments-form textarea');
-        let commentsData = {};
+        let commentsData = new Object();
         Array.prototype.forEach.call(formFields, function (field, i) {
           commentsData[field.name] = field.value;
         });
@@ -122,61 +122,81 @@ document.addEventListener('DOMContentLoaded', () => {
             // Set the button to loading
             el.querySelector('#comment-form-submit').classList.add('is-loading');
 
-            let reCaptchaSiteKey = el.querySelector('input[name="options[reCaptcha][siteKey]"]').value;
-            
-            // grecaptcha.ready(function () {
-            //   grecaptcha.execute(reCaptchaSiteKey, { action: 'submit' }).then(function (token) {
-            //     // Add your logic to submit to your backend server here.
-            //   });
-            // });
-
             let url = new URL(el.getAttribute('action'));
-            url.search = new URLSearchParams(valid).toString();
+            // url.search = new URLSearchParams(valid).toString();
+
+            // Prepare data
+            const encodedComponents = new Array();
+            for (const name in valid) {
+              encodedComponents.push(encodeURIComponent(name) + "=" + encodeURIComponent(valid[name]));
+            }
+            const formData = encodedComponents.join("&").replace(/%20/g, '+');
+
+            window.formData = formData;
+
+
+            // let payload = JSON.stringify(valid);
+            // console.log("PAYLOAD");
+            // console.log(payload);
 
 
 
             // jQuery test
-            console.warn('jQuery test');
-            let $form = $('.comments-form');
+            // let $form = $('.comments-form');
+            // const formData = new FormData(el);
+
+            // var request = new XMLHttpRequest();
+            // request.open('POST', url, true);
+            // request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+            // request.send(formData);
 
 
+            // $.ajax({
+            //   type: $form.attr('method'),
+            //   url:  $form.attr('action'),
+            //   // data: formData,
+            //   data: $form.serialize(),
+            //   contentType: 'application/x-www-form-urlencoded',
+            //   success: function (data) {
+            //     // set_notification('Comment submitted Thanks! Your comment is, It will appear when approved.', 'success');
+            //     console.log("SUBMITTED");
 
-            $.ajax({
-              type: $form.attr('method'),
-              url:  $form.attr('action'),
-              data: $form.serialize(),
-              contentType: 'application/x-www-form-urlencoded',
-              success: function (data) {
-                // set_notification('Comment submitted Thanks! Your comment is, It will appear when approved.', 'success');
-                console.log("SUBMITTED");
+            //     // $("#comment-form-submit")
+            //     //   .html("Submit");
 
-                // $("#comment-form-submit")
-                //   .html("Submit");
+            //     // $form[0].reset();
+            //     // $(form).removeClass('disabled');
+            //     grecaptcha.reset();
+            //     console.dir(data);
+            //   },
+            //   error: function (err) {
+            //     console.log(err);
+            //     var ecode = (err.responseJSON || {}).errorCode || "unknown";
+            //     console.log("ERROR occurred " + ecode)
+            //     // showModal('Error', 'An error occured.<br>[' + ecode + ']');
+            //     // $("#comment-form-submit").html("Submit")
+            //     // $(form).removeClass('disabled');
+            //     grecaptcha.reset();
+            //   }
+            // });
 
-                // $form[0].reset();
-                // $(form).removeClass('disabled');
-                grecaptcha.reset();
-                console.dir(data);
-              },
-              error: function (err) {
-                console.log(err);
-                var ecode = (err.responseJSON || {}).errorCode || "unknown";
-                console.log("ERROR occurred " + ecode)
-                // showModal('Error', 'An error occured.<br>[' + ecode + ']');
-                // $("#comment-form-submit").html("Submit")
-                // $(form).removeClass('disabled');
-                grecaptcha.reset();
-              }
-            });
+            
+            // for( const name in valid) {
+            //   formData.append(name, valid[name]);
+            // }
+            // console.log("FORM DATA OBJECT");
+            // console.log(valid);
+            // window.formData = formData;
+            // window.valid = valid;
 
 
-            /*
             fetch(url, {
               method: 'post',
-              data: JSON.stringify({
-                "options[reCaptcha][siteKey]": "6LcSejMaAAAAALJHPL1cBtbVsrfmSamJRYvT6smz", 
-                "options[reCaptcha][secret]": "LVgwIjs00gp9SsSa3zMMCIajEEpPSGFtrYHpvZLBMdpagIQ3eAytPiYqXii18uxrwdc7PMfI/tTpOlkREPQ4kyeb6QaofkAiu+8gUxOpBdEqig+Q65Z6vrhQyJCiO6aOTytZvbpbQziVhAnbTt4P5Rnh/fKGegRDlzonw02HgTY=" 
-                })
+              body: formData,
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+              }
+              
             })
             .then(function( data ) {
               console.log('sending request');
@@ -209,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
               el.querySelector('#comment-form-submit').classList.remove('is-loading');
               grecaptcha.reset();
             });
-            */
+            
 
 
           })
