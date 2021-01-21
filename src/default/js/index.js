@@ -132,9 +132,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let url = new URL(el.getAttribute('action'));
             url.search = new URLSearchParams(valid).toString();
+
+
+
+            // jQuery test
+            console.warn('jQuery test');
+            let $form = $('.comments-form');
+
+
+
+            $.ajax({
+              type: $form.attr('method'),
+              url:  $form.attr('action'),
+              data: $form.serialize(),
+              contentType: 'application/x-www-form-urlencoded',
+              success: function (data) {
+                // set_notification('Comment submitted Thanks! Your comment is, It will appear when approved.', 'success');
+                console.log("SUBMITTED");
+
+                // $("#comment-form-submit")
+                //   .html("Submit");
+
+                // $form[0].reset();
+                // $(form).removeClass('disabled');
+                grecaptcha.reset();
+                console.dir(data);
+              },
+              error: function (err) {
+                console.log(err);
+                var ecode = (err.responseJSON || {}).errorCode || "unknown";
+                console.log("ERROR occurred " + ecode)
+                // showModal('Error', 'An error occured.<br>[' + ecode + ']');
+                // $("#comment-form-submit").html("Submit")
+                // $(form).removeClass('disabled');
+                grecaptcha.reset();
+              }
+            });
+
+
+            /*
             fetch(url, {
               method: 'post',
-              data: valid
+              data: JSON.stringify({
+                "options[reCaptcha][siteKey]": "6LcSejMaAAAAALJHPL1cBtbVsrfmSamJRYvT6smz", 
+                "options[reCaptcha][secret]": "LVgwIjs00gp9SsSa3zMMCIajEEpPSGFtrYHpvZLBMdpagIQ3eAytPiYqXii18uxrwdc7PMfI/tTpOlkREPQ4kyeb6QaofkAiu+8gUxOpBdEqig+Q65Z6vrhQyJCiO6aOTytZvbpbQziVhAnbTt4P5Rnh/fKGegRDlzonw02HgTY=" 
+                })
             })
             .then(function( data ) {
               console.log('sending request');
@@ -167,12 +209,14 @@ document.addEventListener('DOMContentLoaded', () => {
               el.querySelector('#comment-form-submit').classList.remove('is-loading');
               grecaptcha.reset();
             });
+            */
 
 
           })
           .catch(function (err) {
             // Validation error message
             // Show the error message and exit
+            console.warn('Yup validation error');
             set_notification(err.message, "error");
             grecaptcha.reset();
           });
