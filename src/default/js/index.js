@@ -123,7 +123,6 @@ document.addEventListener('DOMContentLoaded', () => {
             el.querySelector('#comment-form-submit').classList.add('is-loading');
 
             let url = new URL(el.getAttribute('action'));
-            // url.search = new URLSearchParams(valid).toString();
 
             // Prepare data
             const encodedComponents = new Array();
@@ -132,63 +131,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             const formData = encodedComponents.join("&").replace(/%20/g, '+');
 
+            // TODO: Remove before production
             window.formData = formData;
-
-
-            // let payload = JSON.stringify(valid);
-            // console.log("PAYLOAD");
-            // console.log(payload);
-
-
-
-            // jQuery test
-            // let $form = $('.comments-form');
-            // const formData = new FormData(el);
-
-            // var request = new XMLHttpRequest();
-            // request.open('POST', url, true);
-            // request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-            // request.send(formData);
-
-
-            // $.ajax({
-            //   type: $form.attr('method'),
-            //   url:  $form.attr('action'),
-            //   // data: formData,
-            //   data: $form.serialize(),
-            //   contentType: 'application/x-www-form-urlencoded',
-            //   success: function (data) {
-            //     // set_notification('Comment submitted Thanks! Your comment is, It will appear when approved.', 'success');
-            //     console.log("SUBMITTED");
-
-            //     // $("#comment-form-submit")
-            //     //   .html("Submit");
-
-            //     // $form[0].reset();
-            //     // $(form).removeClass('disabled');
-            //     grecaptcha.reset();
-            //     console.dir(data);
-            //   },
-            //   error: function (err) {
-            //     console.log(err);
-            //     var ecode = (err.responseJSON || {}).errorCode || "unknown";
-            //     console.log("ERROR occurred " + ecode)
-            //     // showModal('Error', 'An error occured.<br>[' + ecode + ']');
-            //     // $("#comment-form-submit").html("Submit")
-            //     // $(form).removeClass('disabled');
-            //     grecaptcha.reset();
-            //   }
-            // });
-
-            
-            // for( const name in valid) {
-            //   formData.append(name, valid[name]);
-            // }
-            // console.log("FORM DATA OBJECT");
-            // console.log(valid);
-            // window.formData = formData;
-            // window.valid = valid;
-
 
             fetch(url, {
               method: 'post',
@@ -199,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
               
             })
             .then(function( data ) {
-              console.log('sending request');
               // Check response
               if ( data.status == 200 ) {
                 // Show success message
@@ -236,7 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
           .catch(function (err) {
             // Validation error message
             // Show the error message and exit
-            console.warn('Yup validation error');
             set_notification(err.message, "error");
             grecaptcha.reset();
           });
