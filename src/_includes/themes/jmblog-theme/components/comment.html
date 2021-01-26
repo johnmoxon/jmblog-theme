@@ -1,32 +1,59 @@
-{%- capture article_class %}js-comment comment{% if include.name == site.author.name %} admin{% endif %}{% if
+{%- capture article_class %}media js-comment comment{% if include.name == site.author.name %} admin{% endif %}{% if
 include.is_reply %} child{% endif %}{% endcapture %}
 {% assign comment_id = include.uid | prepend: 'comment-' %}
-<article id="{{ comment_id }}" class="{{ article_class }}" uid="{{ include.uid }}">
 
-    <div class="comment__author">
-        {{- include.name | strip_html -}},
-        <span class="comment__date">
-            {%- if include.date -%}
-            <a href="#{{ comment_id}}" title="Permalink to this comment">
-                {{- include.date | date:"%B %eth, %Y %H:%M" -}}
-            </a>
-            {%- endif -%}
-        </span>
-    </div>
+<article class="{{ article_class }}" id="{{ comment_id }}" uid="{{ include.uid }}">
+    <!-- Gravatar here -->
+    <figure class="media-left">
+        <p class="image is-64x64">
+            {% if include.avatar %}
+            <img src="{{ include.avatar }}" alt="{{ include.name | escape }}" class="is-rounded">
+            {% elsif include.email != "" %}
+            <img src="https://www.gravatar.com/avatar/{{ include.email }}?d={{ '/assets/img/user-circle.svg' | absolute_url | url_encode }}&&s=64"
+                srcset="https://www.gravatar.com/avatar/{{ include.email }}?d={{  }}&&s=128 2x" 
+                alt="{{ include.name | escape }}"
+                class="is-rounded">
+            {% else %}
+            <img src="{{ '/assets/img/user-circle.svg' | absolute_url }}" alt="{{ include.name | escape }}" class="is-rounded">
+            {% endif %}
+        </p>
+    </figure>
+    <!-- end gravatar -->
+    <div class="media-content">
+        <div class="comment__author">
+            <p>
+                <strong>{{- include.name | strip_html -}}</strong> <small class="comment__date">
+                    {%- if include.date -%}
+                    <a href="#{{ comment_id}}" title="Permalink to this comment">
+                        {{- include.date | date:"%B %eth, %Y %H:%M" -}}
+                    </a>
+                    {%- endif -%}
+                </small>
+                <br>
+                {{ include.message | strip_html | markdownify }}
+            </p>
+        </div>     
+{% unless include.is_reply %}
 
-    <div class="comment__body">
-        {{ include.message | strip_html | markdownify }}
-    </div>
 
-    {% if include.is_reply %}
-</article>
-{% else %}
-<div class="comment__meta">
+        <nav class="level is-mobile">
+            <div class="level-left">
+                <a rel="nofollow" 
+                    class="level-item comment__reply-link"
+                    data-comment-id="{{ comment_id }}"
+                    data-page-slug="{{ page.slug }}"
+                    data-uid="{{ include.uid }}" 
+                    data-respond-id="respond">
+                    <span class="icon is-small pr-3">
+                        <i class="fas fa-reply"></i></span> <small>reply to {{ include.name }}</small>
+                </a> 
+            </div>
+        </nav>
+<!-- <div class="comment__meta">
     <a rel="nofollow" class="comment__reply-link"
         onclick="return addComment.moveForm('{{ comment_id }}', 'respond', '{{ page.slug }}', '{{ include.uid }}')">↪&#xFE0E;
         Reply to {{ include.name }}</a>
-</div>
-</article>
+</div> -->
 
 {%- capture this_uid %}{{ include.uid }}{% endcapture %}
 {%- assign replies = site.data.comments[page.slug] | where_exp: 'item', 'item.replying_to_uid == this_uid' %}
@@ -41,5 +68,7 @@ include.is_reply %} child{% endif %}{% endcapture %}
 {% include themes/jmblog-theme/components/comment.html is_reply=true uid=uid email=email name=name url=url date=date message=message %}
 {% endfor %}
 
-<hr style="border-top: 1px solid #ccc; background: transparent; margin-bottom: 10px;">
-{% endif %}
+<!-- <hr style="border-top: 1px solid #ccc; background: transparent; margin-bottom: 10px;"> -->
+{% endunless %}
+    </div>
+</article>

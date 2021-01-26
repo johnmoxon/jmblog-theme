@@ -1,97 +1,87 @@
-<form class="comments-form form" method="post" action="{{ site.staticman_url }}">
-    <input type="hidden" name="options[origin]" value="{{ page.url | absolute_url }}">
-    <input type="hidden" name="options[parent]" value="{{ page.url | absolute_url }}">
-    <input type="hidden" id="comment-replying-to-uid" name="fields[replying_to_uid]" value="">
-    <input type="hidden" name="options[slug]" value="{{ page.slug }}">
-    <input type="hidden" name="options[reCaptcha][siteKey]" value="{{ site.reCaptcha.siteKey }}">
-    <input type="hidden" name="options[reCaptcha][secret]"  value="{{ site.reCaptcha.secret }}">
+<div id="comments__form" class="container mt-6">
+    <form class="comments-form form" method="post" action="{{ site.staticman_url }}">
+        <input type="hidden" name="options[origin]" value="{{ page.url | absolute_url }}">
+        <input type="hidden" name="options[parent]" value="{{ page.url | absolute_url }}">
+        <input type="hidden" id="comment-replying-to-uid" name="fields[replying_to_uid]" value="">
+        <input type="hidden" name="options[slug]" value="{{ page.slug }}">
+        <input type="hidden" name="options[reCaptcha][siteKey]" value="{{ site.reCaptcha.siteKey }}">
+        <input type="hidden" name="options[reCaptcha][secret]"  value="{{ site.reCaptcha.secret }}">
 
-    <div class="field">
-        <label class="label" for="comment-form-message">
-        {% if include.first_comment == true %}Be The First To {% endif %}
-        Leave A Comment
-            <small>
-                <a class="button" 
-                    rel="nofollow" 
-                    id="cancel-comment-reply-link" 
-                    href="{{ page.url | absolute_url }}#respond" 
-                    style="display:none;">(cancel reply)</a>
-            </small>
-        </label>
-        <div class="control">
-            <textarea class="textarea comments-field" 
-                name="fields[message]"
-                id="comment-form-message"
-                placeholder="Your comment (markdown accepted)"
-                required></textarea>
+        <div class="field">
+            <label class="label" for="comment-form-message">
+            {% if include.first_comment == true %}Be The First To {% endif %}
+            Leave A Comment
+            </label>
+            <div class="control">
+                <textarea class="textarea comments-field" 
+                    name="fields[message]"
+                    id="comment-form-message"
+                    placeholder="Your comment (markdown accepted)"
+                    required></textarea>
+            </div>
         </div>
-    </div>
 
-    <div class="field">
-        <label class="label" for="comment-form-name">Name</label>
-        <div class="control has-icons-left">
-            <input class="input comments-field" 
-                name="fields[name]"
-                id="comment-form-name"
-                type="text" 
-                placeholder="Your name (required)"
-                required>
-            <span class="icon is-small is-left">
-                <i class="fas fa-user"></i>
-            </span>
+        <div class="field">
+            <label class="label" for="comment-form-name">Name</label>
+            <div class="control has-icons-left">
+                <input class="input comments-field" 
+                    name="fields[name]"
+                    id="comment-form-name"
+                    type="text" 
+                    placeholder="Your name (required)"
+                    required>
+                <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                </span>
+            </div>
         </div>
-    </div>
 
-    <div class="field">
-        <label class="label">Email</label>
-        <div class="control has-icons-left">
-            <input class="input comments-field" 
-                name="fields[email]"
-                id="comment-form-email"
-                type="email" 
-                placeholder="Your email (optional)">
-            <span class="icon is-small is-left">
-                <i class="fas fa-envelope"></i>
-            </span>
+        <div class="field">
+            <label class="label">Email</label>
+            <div class="control has-icons-left">
+                <input class="input comments-field" 
+                    name="fields[email]"
+                    id="comment-form-email"
+                    type="email" 
+                    placeholder="Your email (optional)">
+                <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                </span>
+            </div>
         </div>
-    </div>
 
-    <div class="is-hidden field textfield narrowfield hp">
-        <label class="label">Website</label>
-        <div class="control has-icons-left">
-            <input class="textfield__input input" 
-                name="fields[hp]" 
-                id="hp" 
-                type="text" 
-                placeholder="Leave blank">
-            <span class="icon is-small is-left">
-                <i class="fas fa-globe-africa"></i>
-            </span>
+        <div class="is-hidden field textfield narrowfield hp">
+            <label class="label">Website</label>
+            <div class="control has-icons-left">
+                <input class="textfield__input input" 
+                    name="fields[hp]" 
+                    id="hp" 
+                    type="text" 
+                    placeholder="Leave blank">
+                <span class="icon is-small is-left">
+                    <i class="fas fa-globe-africa"></i>
+                </span>
+            </div>
         </div>
-    </div>
 
 
-    <div id="reCaptcha" class="g-recaptcha" data-sitekey="{{ site.reCaptcha.siteKey }}"></div>
+        <div id="reCaptcha" class="g-recaptcha" data-sitekey="{{ site.reCaptcha.siteKey }}"></div>
 
-    <button 
-        class="button is-primary" 
-        id="comment-form-submit">
-        Submit xx
-    </button>
+        <div class="field is-grouped mt-3 mb-3">
+            <p class="control">
+                <button class="button is-primary" id="comment-form-submit">
+                    Submit
+                </button>
+            </p>
+            <p class="control">
+                <button class="button is-hidden" id="cancel-comment-reply-link">
+                    Cancel
+                </button>
+            </p>
+        </div>
+        
 
-</form>
+        
 
-{% comment %} 
-<article class="modal mdl-card mdl-shadow--2dp">
-  <div>
-    <h3 class="modal-title js-modal-title"></h3>
-  </div>
-  <div class="mdl-card__supporting-text js-modal-text"></div>
-  <div class="mdl-card__actions mdl-card--border">
-    <button class="button mdl-button--colored mdl-js-button mdl-js-ripple-effect js-close-modal">Close</button>
-  </div>
-</article> {% endcomment %}
-
-{% comment %}
-	from: https://github.com/eduardoboucas/popcorn/blob/gh-pages/_includes/modal.html
-{% endcomment %}
+    </form>
+</div>

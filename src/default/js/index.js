@@ -1,7 +1,14 @@
 //  Import custom styles
 import 'Assets/sass/base.scss';
 
+// Import yup schema validator
 import * as yup from 'yup';
+
+// import the form move/snapback logic
+import moveForm from './moveform';
+
+
+
 
 
 // Enable mobile nav banner
@@ -15,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const $target = document.getElementById(el.dataset.target);
         el.classList.toggle('is-active');
         $target.classList.toggle('is-active');
-      })
+      });
     });
   }
 
@@ -29,9 +36,30 @@ document.addEventListener('DOMContentLoaded', () => {
   //   });
   // }
 
+  // Handle the reply links 
+  const $reply_links = Array.prototype.slice.call(document.querySelectorAll('.comment__reply-link'), 0);
+  if ($reply_links.length > 0) {
+    $reply_links.forEach(el => {
+
+      let commentId = el.dataset.commentId,
+        respondId = el.dataset.respondId,
+        postId = el.dataset.pageSlug,
+        parentId = el.dataset.uid;
+
+
+ 
+        
+      el.addEventListener('click', () => {
+        // Move the form to reply to the selected comment
+        moveForm.move(commentId, respondId, postId, parentId);
+      });
+    });
+  }
+
   // Handle the comments form
   const $comments = Array.prototype.slice.call(document.querySelectorAll('.comments-form'), 0);
   if ($comments.length > 0) {
+
     $comments.forEach( el => {
 
       // build and insert the notification container 
