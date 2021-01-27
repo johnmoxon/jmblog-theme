@@ -7,14 +7,24 @@ include.is_reply %} child{% endif %}{% endcapture %}
     <figure class="media-left">
         <p class="image is-64x64">
             {% if include.avatar %}
-            <img src="{{ include.avatar }}" alt="{{ include.name | escape }}" class="is-rounded">
+            <img src="{{ include.avatar }}" 
+                alt="{{ include.name | escape }}" 
+                width="64px" 
+                height="64px" 
+                class="is-rounded">
             {% elsif include.email != "" %}
             <img src="https://www.gravatar.com/avatar/{{ include.email }}?d={{ '/assets/img/user-circle.svg' | absolute_url | url_encode }}&&s=64"
-                srcset="https://www.gravatar.com/avatar/{{ include.email }}?d={{  }}&&s=128 2x" 
+                srcset="https://www.gravatar.com/avatar/{{ include.email }}?d={{ '/assets/img/user-circle.svg' | absolute_url | url_encode }}&&s=128 2x" 
                 alt="{{ include.name | escape }}"
+                width="64px"
+                height="64px"
                 class="is-rounded">
             {% else %}
-            <img src="{{ '/assets/img/user-circle.svg' | absolute_url }}" alt="{{ include.name | escape }}" class="is-rounded">
+            <img src="{{ '/assets/img/user-circle.svg' | absolute_url }}" 
+                alt="{{ include.name | escape }}" 
+                width="64px"
+                height="64px"
+                class="is-rounded">
             {% endif %}
         </p>
     </figure>
@@ -49,11 +59,6 @@ include.is_reply %} child{% endif %}{% endcapture %}
                 </a> 
             </div>
         </nav>
-<!-- <div class="comment__meta">
-    <a rel="nofollow" class="comment__reply-link"
-        onclick="return addComment.moveForm('{{ comment_id }}', 'respond', '{{ page.slug }}', '{{ include.uid }}')">↪&#xFE0E;
-        Reply to {{ include.name }}</a>
-</div> -->
 
 {%- capture this_uid %}{{ include.uid }}{% endcapture %}
 {%- assign replies = site.data.comments[page.slug] | where_exp: 'item', 'item.replying_to_uid == this_uid' %}

@@ -13,7 +13,7 @@ comments:
   #
   # Name of the branch being used. Must match the one sent in the URL of the
   # request.
-  branch: stage
+  branch: master
 
   # Text to use as the commit message or pull request title. Accepts placeholders.
   commitMessage: "Comment from {fields.name} on {options.slug}"
@@ -43,7 +43,7 @@ comments:
   moderation: true
 
   # Name of the site. Used in notification emails.
-  name: "Learn. Grow. Lead. Blog"
+  name: "You site name"
 
   # Notification settings. When enabled, users can choose to receive notifications
   # via email when someone adds a reply or a new comment. This requires an account
@@ -69,14 +69,14 @@ comments:
 
   # Names of required fields. If any of these isn't in the request or is empty,
   # an error will be thrown.
-  requiredFields: ["name", "email", "message"]
+  requiredFields: ["name", "message"]
 
   # List of transformations to apply to any of the fields supplied. Keys are
   # the name of the field and values are possible transformation types.
   transforms:
     email: md5
 
-  reCaptcha:
-    enabled: true
-    siteKey: 6Lf0ZSgaAAAAAB_8Gy4JzZmDvhwlEvQR7CrRNIg2
-    secret: TIk3xVoFqIf5i3Nxysg1AUvW4dvZ4YRLf/pQYJ0btLhUk+ymajuPt4gh7LDsUlGOPc8pZpn/GNW0PDfGG5B39naOZibIZsWAIrogrRLRsK5tSWgN6LYFGT0bIB8VtEROwlJHmyIfIdGtPR+47L0kxJIeOooIZOqd0VUo/XJqXOR6kiFdO1HZPRj8hAEwpaWe8FUlsIjIBGNuNp1rb17E97QC5jxVcgMP+YKo2sRYIXTd7p0mgEYbHZDEOmEtT5zqzVv25lS7GNdnC2OYjXEhfzLXh+4w0LwNDZw1ZEWxILbTIaHsaIVEHYoPP4u1jorWV+wqFWlXXdIJooiTi4W8D/+5VDiy1WOknvvq3X7Yi2yDwFDb+NCArg52OoJi29OakZQf6o1y9Hjt/DC13MJG+j4pgp2wxvvcdiOhUv4FlMxZJJ6iLBBz2A4zWbNkpvbb+a73atQcbQuLlSZc8zEQ/s/IWwWvDJNeqqaO2jvpjiUydT604zrPxIOTmYw2HdslYyqveZcH64JMEL+rtFmw79ujm9LVh5pnTY442Q2Xrv10Pr8ad2EbibhAoQf2IY2RMog0Iaa9nnuwBzonimwM5u7AXqfBuNERf9rLtOLNlyH+osh27SJbBlCppWT48Qpnn58hwXuYl5miJNZAWAYeG75abhWUIigpq0g7yOW+Ozo=
+  # reCaptcha:
+  #   enabled: true
+  #   siteKey: {{YourreCaptchaSiteKey}}
+  #   secret: {{YourreCaptchaSecretKey}}

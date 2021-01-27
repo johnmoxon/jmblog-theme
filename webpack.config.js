@@ -101,7 +101,7 @@ module.exports = {
         // Helpful for development 
         { from: '_data', to: '_data' },
         { from: '_pages', to: '_pages' },
-        { from: '_drafts', to: '_drafts' }, // Used when symlinking in drafts 
+        // { from: '_drafts', to: '_drafts' }, // Used when symlinking in drafts 
         { from: '_posts', to: '_posts' },
         { from: '_authors', to: '_authors' },
         { from: 'index.html', to: '.' }

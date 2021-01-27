@@ -8,6 +8,7 @@ __*
 .post-template
 _site
 _build
+JB.old
 #index.html
 
 node_modules

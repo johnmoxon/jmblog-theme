@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         baseNotificationEl.classList.remove("is-hidden");
 
-        baseNotificationEl.scrollIntoView();
+        baseNotificationEl.scrollIntoView({ behavior: 'smooth' });
       }
 
       // quick function to reset messages

@@ -13,18 +13,15 @@ collections:
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Learn. Grow. Lead.
-tagline: "Lessons Learned Through A Career In Digital Leadership"
-author: John Moxon
+title: Website title
+tagline: "Website tagline"
+author: Author Name
 
 description: >-
-  Personal blog for John Moxon | Digital Leader, Life-long-learner,
-  Risk mitigator, Technology/Fintech evangelist and amateur 
-  beer brewer. Writing articles about what I know and what I learn as I 
-  find my own path in my career and life. 
+  Website description. 
 
-copyright: "copyright John Moxon 2020. All rights reserved."
-license: "copyright John Moxon 2020. All rights reserved."
+copyright: "copyright Author name 2020. All rights reserved."
+license: "copyright Author name 2020. All rights reserved."
 
 paginate: 5
 paginate_path: "/articles/page:num/"
@@ -38,17 +35,17 @@ quiet: false
 verbose: false
 
 baseurl: "" # the subpath of your site, e.g. /blog
-url: https://www.jmoxon.net # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username : https://twitter.com/johnmoxon
-github_username : http://github.com/johnmoxon/
-linkedin_username : https://www.linkedin.com/in/johnmoxon/
-medium_username : https://medium.com/@johnmoxon
-meeting_url: 'https://meetings.hubspot.com/jmoxon'
+url: https://www.yourwebsite.com # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username : https://twitter.com/yourtwitterhandle
+github_username : http://github.com/githubusername/
+linkedin_username : https://www.linkedin.com/in/linkedinprofile/
+medium_username : https://medium.com/@mediumusername
+meeting_url: 'https://meetings.hubspot.com/meetingurl'
 
 # GTM Tracking ID
 analytics:
   gtm:
-    tracking_id: GTM-WGHRT3
+    tracking_id: GTM-XXXXXXX
 
 # Build settings
 markdown: kramdown
@@ -91,12 +88,11 @@ kramdown:
 #
 # for me, this line reads:
 # https://staticman-travisdownsio.herokuapp.com/v2/entry/travisdowns/travisdowns.github.io/master/comments
-# staticman_url: https://jmoxon-blog-comments.herokuapp.com/v2/entry/johnmoxon/johnmoxon.github.io/stage/comments
-staticman_url: https://jmoxon-blog-comments.herokuapp.com/v3/entry/github/johnmoxon/johnmoxon.github.io/stage/comments
+# staticman_url: https://staticmaninstance.herokuapp.com/v2/entry/githubusername/repository/branch/comments
 
 # reCaptcha configuration info: the exact same site key and *encrypted* secret that you used in staticman.yml
 # I personally don't think the secret needs to be included in the generated site, but the staticman API bridge uses
 # it to ensure the site configuration and bridge configuration match (but why not just compare the site key?)
-reCaptcha:
-  siteKey: 6Lf0ZSgaAAAAAB_8Gy4JzZmDvhwlEvQR7CrRNIg2
-  secret: TIk3xVoFqIf5i3Nxysg1AUvW4dvZ4YRLf/pQYJ0btLhUk+ymajuPt4gh7LDsUlGOPc8pZpn/GNW0PDfGG5B39naOZibIZsWAIrogrRLRsK5tSWgN6LYFGT0bIB8VtEROwlJHmyIfIdGtPR+47L0kxJIeOooIZOqd0VUo/XJqXOR6kiFdO1HZPRj8hAEwpaWe8FUlsIjIBGNuNp1rb17E97QC5jxVcgMP+YKo2sRYIXTd7p0mgEYbHZDEOmEtT5zqzVv25lS7GNdnC2OYjXEhfzLXh+4w0LwNDZw1ZEWxILbTIaHsaIVEHYoPP4u1jorWV+wqFWlXXdIJooiTi4W8D/+5VDiy1WOknvvq3X7Yi2yDwFDb+NCArg52OoJi29OakZQf6o1y9Hjt/DC13MJG+j4pgp2wxvvcdiOhUv4FlMxZJJ6iLBBz2A4zWbNkpvbb+a73atQcbQuLlSZc8zEQ/s/IWwWvDJNeqqaO2jvpjiUydT604zrPxIOTmYw2HdslYyqveZcH64JMEL+rtFmw79ujm9LVh5pnTY442Q2Xrv10Pr8ad2EbibhAoQf2IY2RMog0Iaa9nnuwBzonimwM5u7AXqfBuNERf9rLtOLNlyH+osh27SJbBlCppWT48Qpnn58hwXuYl5miJNZAWAYeG75abhWUIigpq0g7yOW+Ozo=
+# reCaptcha:
+#   siteKey: yoursitekey
+#   secret: yourencryptedsecretkey
