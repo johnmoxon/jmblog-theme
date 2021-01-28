@@ -13,14 +13,14 @@ include.is_reply %} child{% endif %}{% endcapture %}
                 height="64px" 
                 class="is-rounded">
             {% elsif include.email != "" %}
-            <img src="https://www.gravatar.com/avatar/{{ include.email }}?d={{ '/assets/img/user-circle.svg' | absolute_url | url_encode }}&&s=64"
-                srcset="https://www.gravatar.com/avatar/{{ include.email }}?d={{ '/assets/img/user-circle.svg' | absolute_url | url_encode }}&&s=128 2x" 
+            <img src="https://www.gravatar.com/avatar/{{ include.email }}?d={{ '/assets/img/user-circle-solid.svg' | absolute_url | url_encode }}&&s=64"
+                srcset="https://www.gravatar.com/avatar/{{ include.email }}?d={{ '/assets/img/user-circle-solid.svg' | absolute_url | url_encode }}&&s=128 2x" 
                 alt="{{ include.name | escape }}"
                 width="64px"
                 height="64px"
                 class="is-rounded">
             {% else %}
-            <img src="{{ '/assets/img/user-circle.svg' | absolute_url }}" 
+            <img src="{{ '/assets/img/user-circle-solid.svg' | absolute_url }}" 
                 alt="{{ include.name | escape }}" 
                 width="64px"
                 height="64px"
