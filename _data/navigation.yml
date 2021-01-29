@@ -3,6 +3,6 @@ items:
   - name: Home
     link: /
   - name: About
-    link: /authors/john
+    link: /authors/john_doe
   - name: Contact
     link: /contact
