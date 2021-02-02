@@ -9,6 +9,7 @@ __*
 _site
 _build
 JB.old
+.DS_Store
 #index.html
 
 node_modules
