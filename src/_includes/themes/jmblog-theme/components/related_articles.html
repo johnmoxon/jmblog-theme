@@ -3,7 +3,7 @@
 {% assign maxRelatedCounter = 0 %}
 
 {% assign posts = site.posts |  where_exp: "item", "item.slug != page.slug" %}
-{% if posts.size >= 1%}
+{% if posts.size >= 1 %}
 <section class="hero is-dark">
     <div class="hero-body">
         <h4 class="title is-6 is-spaced">Related posts</h4>
@@ -40,7 +40,7 @@
                         </a>
                     </div>
 
-                    <!-- END related component -->
+                     <!-- END related component -->
                     {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
                     {% if maxRelatedCounter >= maxRelated %}
                         {% break %}
