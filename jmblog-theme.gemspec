@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "jmblog-theme"
-  spec.version       = "1.1.6"
+  spec.version       = "1.1.7"
   spec.authors       = ["John Moxon"]
   spec.email         = ["jmoxon@gmail.com"]
 

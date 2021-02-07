@@ -4,11 +4,11 @@
 
 {% assign posts = site.posts |  where_exp: "item", "item.slug != page.slug" %}
 {% if posts.size >= 1 %}
-<section class="hero is-dark">
-    <div class="hero-body">
-        <h4 class="title is-6 is-spaced">Related posts</h4>
-        
-        <div class="columns is-multiline">
+
+
+
+
+
 
             {% for post in posts %}
                 {% assign sameTagCount = 0 %}
@@ -20,6 +20,16 @@
                 {% endfor %}
 
                 {% if sameTagCount >= minCommonTags %}
+                    {% comment %} {% increment my_counter %} {% endcomment %}
+
+                    {% if maxRelatedCounter == 0 %}
+                    <section class="hero is-dark">
+                        <div class="hero-body">
+                            <h4 class="title is-6 is-spaced">Related posts</h4>
+                            
+                            <div class="columns is-multiline">
+                    {% endif %}
+
                     <!-- START related component -->
                     <div class="column is-one-quarter">
                         <a href="{{ post.url }}">
@@ -43,12 +53,15 @@
                      <!-- END related component -->
                     {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
                     {% if maxRelatedCounter >= maxRelated %}
-                        {% break %}
+                                          
+                    {% break %}
                     {% endif %}
                 {% endif %}
 
             {% endfor %}
-        </div>
-    </div>
-</section>                        
+            {% if maxRelatedCounter > 0 %}
+                    </div>
+                </div>
+            </section>  
+            {% endif %}
 {% endif %}
