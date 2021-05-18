@@ -1,0 +1,17 @@
+@charset "utf-8";
+$size-1: 6.6rem;
+$navbar-padding-horizontal: 4rem;
+
+@import '~bulma/sass/utilities/_all';
+
+
+
+// import breakpoint
+@import 'utilities/breakpoints';
+
+// import branding
+@import 'theme/all';
+
+// Bulma framwork - order is significant here
+// import bulma base styles
+@import "~bulma/sass/base/_all";

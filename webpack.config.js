@@ -8,6 +8,7 @@ const CompressionPlugin = require('compression-webpack-plugin');
 module.exports = {
   mode: 'production',
   entry: {
+    critical: path.resolve(__dirname, "src/assets/sass/critical.scss"),
     default: './src/default/js/index.js',
     vendor: './src/default/js/vendor.js',
     maintenance: './src/maintenance/js/index.js'

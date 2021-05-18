@@ -1,19 +1,7 @@
-@charset "utf-8";
-$size-1: 6.6rem;
-$navbar-padding-horizontal: 4rem;
+@import 'utilities/helpers.scss';  // May be critical.  Need to test
 
-@import '~bulma/sass/utilities/_all';
-
-
-
-// import breakpoint utilities
-@import 'utilities/_all';
-
-// import theme and brand
-@import 'theme/_all';
 
 // Import bulma
-@import "~bulma/sass/base/_all";
 
 // Elements
 // @import "~bulma/sass/elements/_all";
