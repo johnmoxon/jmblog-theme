@@ -1,29 +1,6 @@
 .card{
   border: 1px solid $black;
 
-  // .is-featured{
-  //   position: absolute;
-  //   // float: left;
-  //   z-index: 30;
-  //   // padding:0.5rem 3rem 0.5rem 0.8rem;
-  //   // margin:2rem 0 1rem 2rem;
-  //   top:2rem;
-  //   left:2rem;
-  //   line-height: 2rem;
-  //   // letter-spacing: -1px;
-  //   // -webkit-box-decoration-break: clone;
-  //   // box-decoration-break: clone;
-
-  //   // border:solid $black;
-  //   // border-width:0 1px 1px 0;
-  //   text-transform: uppercase;
-  //   // margin:-1.6rem null null -1px;
-  //   span{
-  //     background-color: $white;
-  //     display: block;
-  //   }
-  // }
-
   .padded-multiline {
     line-height: 1.8;
     position: absolute;
@@ -33,7 +10,6 @@
     @include for-tablet-portrait-up {
       padding-top: 4rem;
     }
-    // left:0.5rem;
 
     span{
       background-color: $black;

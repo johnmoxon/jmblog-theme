@@ -1,6 +1,11 @@
 //  Import custom styles
-import 'Assets/sass/base.scss';
+// import 'Assets/sass/base.scss'; // Styles need to load before JS on this site
 
+
+/*
+These next 2 are only required where forms exist.  
+Suggest only loading on articles / contact pages
+*/
 // Import yup schema validator
 import * as yup from 'yup';
 
@@ -14,7 +19,7 @@ import moveForm from './moveform';
 // Enable mobile nav banner
 document.addEventListener('DOMContentLoaded', () => {
 
-  // If there are any navbar burgers add a click event to each to toggle classes
+  // Navigation bars
   const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
   if ($navbarBurgers.length > 0) {
     $navbarBurgers.forEach( el => {
@@ -36,6 +41,10 @@ document.addEventListener('DOMContentLoaded', () => {
   //   });
   // }
 
+  /*
+  COMMENTS FORMS - consider moving to non-critical
+  */
+
   // Handle the reply links 
   const $reply_links = Array.prototype.slice.call(document.querySelectorAll('.comment__reply-link'), 0);
   if ($reply_links.length > 0) {
@@ -45,9 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
         respondId = el.dataset.respondId,
         postId = el.dataset.pageSlug,
         parentId = el.dataset.uid;
-
-
- 
         
       el.addEventListener('click', () => {
         // Move the form to reply to the selected comment
@@ -102,9 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         baseNotificationEl.classList.add("is-hidden");
       }
 
-      // window.set_notification = set_notification;
-      // window.clear_notication = clear_notication;
-      window.el = el;
+      // window.el = el;
 
       el.addEventListener('submit', function(evt){
         // halt native form submit
@@ -214,6 +218,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /*
+  ARTICLE PAGES - critical on mobile article pages
+  */
   // If a post page, scroll to article start
   if ( 
       document.querySelector('#main_article') && 
@@ -223,6 +230,9 @@ document.addEventListener('DOMContentLoaded', () => {
     $scrollTarget.scrollIntoView();
   }
 
+  /*
+  BOOKMARK BUTTONS - non critical
+  */
   // Add handler for bookmark buttons
   const $bookmark_buttons = Array.prototype.slice.call(document.querySelectorAll('.bookmark-this'), 0);
   if ($bookmark_buttons.length > 0) {
@@ -257,11 +267,5 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
-
-
-
-  
-
-
 
 });
