@@ -4,14 +4,32 @@ $navbar-padding-horizontal: 4rem;
 
 @import '~bulma/sass/utilities/_all';
 
-
-
 // import breakpoint
 @import 'utilities/breakpoints';
 
+// Need to split the below out into Home / Articles etc
+
 // import branding
 @import 'theme/all';
-
 // Bulma framwork - order is significant here
 // import bulma base styles
 @import "~bulma/sass/base/_all";
+@import "~bulma/sass/elements/container";
+@import "~bulma/sass/elements/content";
+@import "~bulma/sass/elements/icon";
+@import "~bulma/sass/elements/image";
+@import "~bulma/sass/elements/tag";
+@import "~bulma/sass/elements/title";
+
+// components
+@import "~bulma/sass/components/card";  // home page only?
+@import "~bulma/sass/components/navbar";
+
+// Grid
+@import "~bulma/sass/grid/columns";
+
+// Layout
+@import "~bulma/sass/layout/section";
+
+@import 'modules/card'; //above the fold on home only? but below the fold elsewhere
+@import 'modules/navbar';
