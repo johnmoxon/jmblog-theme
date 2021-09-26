@@ -1,35 +1,97 @@
 @charset "utf-8";
+
+/* Global bulma variables */
 $size-1: 6.6rem;
+
+/* Navigation variable settings */
 $navbar-padding-horizontal: 4rem;
 
+/* Card variable settings */
+$card-radius:0;
+
+/* Box variables */
+$box-background-color: #fff;
+$box-radius: 6px;
+
+/* Bulma utilities is a dependency for custom utilities */
 @import '~bulma/sass/utilities/_all';
 
-// import breakpoint
-@import 'utilities/breakpoints';
-
-// Need to split the below out into Home / Articles etc
+// import breakpoints and helpers
+@import 'utilities/_all';
 
 // import branding
-@import 'theme/all';
+@import 'theme/_all';
+
+
 // Bulma framwork - order is significant here
 // import bulma base styles
 @import "~bulma/sass/base/_all";
+
+// @import "~bulma/sass/elements/_all";
+@import "~bulma/sass/elements/box";
+@import "~bulma/sass/elements/button"; //temp comment
 @import "~bulma/sass/elements/container";
 @import "~bulma/sass/elements/content";
 @import "~bulma/sass/elements/icon";
 @import "~bulma/sass/elements/image";
+@import "~bulma/sass/elements/notification"; //temp comment
+@import "~bulma/sass/elements/other"; //temp comment
+// @import "~bulma/sass/elements/progress";
+// @import "~bulma/sass/elements/table";
 @import "~bulma/sass/elements/tag";
 @import "~bulma/sass/elements/title";
 
-// components
-@import "~bulma/sass/components/card";  // home page only?
+// Form
+// @import "~bulma/sass/form/_all";
+@import "~bulma/sass/form/shared"; //temp comment
+@import "~bulma/sass/form/tools"; //temp comment
+@import "~bulma/sass/form/input-textarea"; //temp comment
+// @import "~bulma/sass/form/select"; //temp comment
+// @import "~bulma/sass/form/checkbox-radio";
+// @import "~bulma/sass/form/file";
+
+// Components
+// @import "~bulma/sass/components/_all";
+@import "~bulma/sass/components/breadcrumb";
+@import "~bulma/sass/components/card";
+// @import "~bulma/sass/components/dropdown";
+@import "~bulma/sass/components/level";
+@import "~bulma/sass/components/media";
+// @import "~bulma/sass/components/menu";
+// @import "~bulma/sass/components/message";
+// @import "~bulma/sass/components/modal";
 @import "~bulma/sass/components/navbar";
+@import "~bulma/sass/components/pagination";
+// @import "~bulma/sass/components/panel";
+// @import "~bulma/sass/components/tabs";
 
 // Grid
+// @import "~bulma/sass/grid/_all";
 @import "~bulma/sass/grid/columns";
+// @import "~bulma/sass/grid/tiles";
+
+// Helpers
+@import "~bulma/sass/helpers/_all";  // what used for? //temp comment
+// @import "~bulma/sass/helpers/color";
+// @import "~bulma/sass/helpers/float";
+// @import "~bulma/sass/helpers/other";
+// @import "~bulma/sass/helpers/overflow";
+// @import "~bulma/sass/helpers/position";
+// @import "~bulma/sass/helpers/spacing";
+// @import "~bulma/sass/helpers/typography";
+// @import "~bulma/sass/helpers/visibility";
 
 // Layout
-@import "~bulma/sass/layout/section";
+// Layout
+@import "~bulma/sass/layout/_all";
+// @import "~bulma/sass/layout/footer";
+// @import "~bulma/sass/layout/hero";
+// @import "~bulma/sass/layout/section";
+
 
 @import 'modules/card'; //above the fold on home only? but below the fold elsewhere
 @import 'modules/navbar';
+
+
+
+// ------------------

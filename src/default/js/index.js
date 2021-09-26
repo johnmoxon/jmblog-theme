@@ -1,5 +1,5 @@
 //  Import custom styles
-// import 'Assets/sass/base.scss'; // Styles need to load before JS on this site
+import 'Assets/sass/base.scss'; // Styles need to load before JS on this site
 
 
 /*
@@ -18,6 +18,8 @@ import moveForm from './moveform';
 
 // Enable mobile nav banner
 document.addEventListener('DOMContentLoaded', () => {
+
+  window.console.log("loaded default");
 
   // Navigation bars
   const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);

@@ -2,7 +2,39 @@
 <html>
   <head>
     {% include themes/jmblog-theme/components/head.html %}
-    <%= htmlWebpackPlugin.tags.headTags %>
+
+    <style>
+      <%= compilation.assets[(htmlWebpackPlugin.files.css[0]).replace(/^\//, "")].source() %>
+    </style>
+
+
+    <% 
+    _.forEach(htmlWebpackPlugin.tags.headTags, function (tag) {
+      // exclude inlined critical tags
+      let src_check = tag.attributes.src || tag.attributes.href;
+      if (src_check.match(/critical/i)) { return; }
+
+      let attrs = new Array(), tagOutput
+      _.forEach(tag.attributes, function (attrVal, attrName) {
+          // set defer tag
+          if (attrName == "defer") {
+              attrVal = "defer";
+
+          }
+
+          attrs.push(`${ attrName }="${ attrVal }"`);
+      });
+
+      // Build tag
+      tagOutput = `<${ tag.tagName } ${_.join(attrs, " ")}>`;
+      if (!tag.voidTag) { tagOutput += `</${ tag.tagName }>` }
+      print(tagOutput);
+    })
+    %>
+
+    <!-- #yeww
+    <%= JSON.stringify(htmlWebpackPlugin.tags.headTags) %>
+    -->
   </head>
   <body id="jmoxon">
     {% include themes/jmblog-theme/components/analytics/googletagmanager_body.html %}
@@ -29,5 +61,6 @@
 
 
    <%= htmlWebpackPlugin.tags.bodyTags %>
+
   </body>
 </html>
