@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    {% include themes/jmblog-theme/components/head.html %}
-
     <style>
       <%= compilation.assets[(htmlWebpackPlugin.files.css[0]).replace(/^\//, "")].source() %>
     </style>
+    {% include themes/jmblog-theme/components/head.html %}
 
 
+    {%comment%}build asset tags{%endcomment%}
     <% 
     _.forEach(htmlWebpackPlugin.tags.headTags, function (tag) {
       // exclude inlined critical tags
@@ -32,9 +32,6 @@
     })
     %>
 
-    <!-- #yeww
-    <%= JSON.stringify(htmlWebpackPlugin.tags.headTags) %>
-    -->
   </head>
   <body id="jmoxon">
     {% include themes/jmblog-theme/components/analytics/googletagmanager_body.html %}
