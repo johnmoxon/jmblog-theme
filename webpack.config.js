@@ -22,7 +22,7 @@ module.exports = {
     // critical: './src/assets/sass/critical.scss',
     default: 'Default/js/index.js',
     vendor: 'Default/js/vendor.js',
-    // maintenance: './src/maintenance/js/index.js'
+    maintenance: './src/maintenance/js/index.js'
   },
   output: {
     path: path.resolve(__dirname, '_build'),
@@ -72,7 +72,7 @@ module.exports = {
       },
     }),
     new HtmlWebpackPlugin({
-      title: 'defaulter',
+      title: 'default',
       hash: false,
       inject: false,
       scriptLoading: 'defer',
@@ -93,13 +93,14 @@ module.exports = {
         removeScriptTypeAttributes: false,
         removeStyleLinkTypeAttributes: false,
         useShortDoctype: true
-
+        
       }
     }),
     new HtmlWebpackPlugin({
       title: 'Error page',
       hash: true,
-      inject: false,
+      scriptLoading: 'defer',
+      inject: true,
       chunks: ['maintenance'],
       template: './src/_includes/themes/jmblog-theme/theme/maintenance.html',
       filename: '_includes/themes/jmblog-theme/theme/maintenance.html',

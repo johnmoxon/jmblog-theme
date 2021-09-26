@@ -1,5 +1,5 @@
 //  Import custom styles
-import 'Assets/sass/base.scss';
+import 'Assets/sass/critical.scss';
 
 
 // Enable mobile nav banner
