@@ -30,6 +30,6 @@
   },
   "dependencies": {
     "netlify-plugin-pushover": "^0.1.1",
-    "yup": "^0.32.8"
+    "yup": "^0.32.11"
   }
 }
